@@ -70,13 +70,6 @@
               Kenya, Uganda, Nigeria, and China connected through trusted routes and
               stablecoin-enabled settlement.
             </p>
-            <div class="hero-rail-pills" aria-label="Supported payout rails">
-              <span>M-Pesa</span>
-              <span>Airtel Money</span>
-              <span>Alipay</span>
-              <span>WeChat Pay</span>
-              <span>Bank transfer</span>
-            </div>
             <div class="hero-actions">
               <a class="button button-primary" href="#get-started">Start with Wapi Pay</a>
               <a class="button button-secondary" href="#products">See products</a>
@@ -124,86 +117,74 @@
           </div>
 
           <div class="hero-stage">
-            <div class="hero-stage-frame hero-network" data-network data-spotlight>
+            <div class="hero-stage-frame hero-network" data-network>
               <div class="network-topline">
-                <span>Live platform architecture</span>
-                <span>Fast. Reliable. Secure.</span>
+                <span>Africa-connected route network</span>
+                <span>Live settlement visibility</span>
               </div>
 
-              <div class="network-links" aria-hidden="true">
-                <span class="network-link network-link-retail"></span>
-                <span class="network-link network-link-enterprise"></span>
-                <span class="network-link network-link-otc"></span>
+              <div class="network-globe network-globe-hero" data-depth="0.35" data-route-globe>
+                <div class="network-globe-sphere">
+                  <div
+                    class="network-globe-render"
+                    role="img"
+                    aria-label="Africa-forward corridor globe"
+                    data-globe-render
+                  ></div>
+                  <div class="network-globe-sheen"></div>
+                </div>
               </div>
 
-              <div class="network-grid-mask" aria-hidden="true"></div>
-
-              <div class="network-globe" aria-hidden="true" data-depth="0.45">
-                <div class="network-globe-map"></div>
-                <div class="network-globe-halo"></div>
-                <span class="network-orbit network-orbit-one"></span>
-                <span class="network-orbit network-orbit-two"></span>
-                <span class="network-node network-node-one"></span>
-                <span class="network-node network-node-two"></span>
-                <span class="network-node network-node-three"></span>
-                <span class="network-node network-node-four"></span>
-              </div>
-
-              <article class="network-core" data-depth="1.2">
-                <p>Wapi Pay Network</p>
-                <h2>Collections, payout, and settlement in one operating layer.</h2>
-                <ul class="network-capabilities">
-                  <li>Collections</li>
-                  <li>Payouts</li>
-                  <li>Settlement</li>
-                </ul>
-                <div class="network-live-route">
-                  <span class="network-live-dot"></span>
-                  <span>Active route: Nairobi to Guangzhou via local rails and USDC settlement</span>
-                </div>
-              </article>
-
-              <article class="network-card network-card-retail" data-depth="3">
-                <span class="network-label">Retail</span>
-                <h3>Wallet and personal transfers</h3>
-                <ul class="network-card-tags">
-                  <li>Wallet</li>
-                  <li>IBAN</li>
-                  <li>Card</li>
-                </ul>
-              </article>
-
-              <article class="network-card network-card-enterprise" data-depth="2.3" id="business">
-                <span class="network-label">Enterprise</span>
-                <h3>Collections and payout infrastructure</h3>
-                <ul class="network-card-tags">
-                  <li>Collections</li>
-                  <li>Bulk payouts</li>
-                  <li>API</li>
-                </ul>
-              </article>
-
-              <article class="network-card network-card-otc" data-depth="2.8">
-                <span class="network-label network-label-accent">OTC Desk</span>
-                <h3>High-value FX and treasury settlement</h3>
-                <ul class="network-card-tags">
-                  <li>FX desk</li>
-                  <li>USDC / USDT</li>
-                  <li>Dedicated support</li>
-                </ul>
-              </article>
-
-              <div class="network-status-band">
-                <div class="network-status-item">
-                  <strong>Trusted rails</strong>
-                  <span>M-Pesa, Airtel Money, Alipay, WeChat Pay</span>
-                </div>
-                <div class="network-status-item">
-                  <strong>Control layer</strong>
-                  <span>Compliance checks, approvals, and route visibility</span>
-                </div>
+              <div class="network-route-dock" data-depth="0.8">
+                <article class="network-rate-card" data-route-card>
+                  <div class="network-rate-card-head">
+                    <span class="network-route-status">Live rate</span>
+                  </div>
+                  <h2 data-route-title>Nairobi to Guangzhou</h2>
+                  <div class="network-rate-value">
+                    <strong data-route-rate>1 USD = 7.24 CNY</strong>
+                  </div>
+                </article>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="rate-check-band reveal" aria-labelledby="rate-check-title">
+          <div class="rate-check-shell">
+            <div class="rate-check-copy">
+              <p class="eyebrow">Rate Check</p>
+              <h2 id="rate-check-title">
+                <span class="text-reveal">Estimate your amount before you move money.</span>
+              </h2>
+              <p>
+                Indicative pricing for major Wapi Pay corridors. Final rates depend on route,
+                timing, and settlement method.
+              </p>
+            </div>
+
+            <form class="rate-check-form" data-rate-form>
+              <label class="rate-field">
+                <span>Amount in USD</span>
+                <input type="number" min="1" step="1" value="100" inputmode="decimal" data-rate-amount />
+              </label>
+
+              <label class="rate-field">
+                <span>Route</span>
+                <select data-rate-route>
+                  <option value="nairobi-guangzhou">Nairobi to Guangzhou</option>
+                  <option value="lagos-nairobi">Lagos to Nairobi</option>
+                  <option value="kampala-guangzhou">Kampala to Guangzhou</option>
+                  <option value="nairobi-lagos">Nairobi to Lagos</option>
+                </select>
+              </label>
+
+              <div class="rate-check-result" aria-live="polite">
+                <span>You receive</span>
+                <strong data-rate-output>724.00 CNY</strong>
+                <small data-rate-meta>Indicative rate 1 USD = 7.24 CNY</small>
+              </div>
+            </form>
           </div>
         </section>
 
@@ -576,6 +557,8 @@
       </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.39.2/dist/globe.gl.min.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
