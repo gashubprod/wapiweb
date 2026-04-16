@@ -1668,8 +1668,7 @@ if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const routeTitleEl = routeCard.querySelector("[data-route-title]");
     const routeRateEl = routeCard.querySelector("[data-route-rate]");
-    const geoJsonUrl =
-      "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson";
+    const geoJsonUrl = "assets/world.geojson";
     let activeRouteId = "lagos-nairobi";
     let activeRoute = null;
     let cycleInterval = null;

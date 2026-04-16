@@ -156,6 +156,11 @@ button,
   transform: translateY(-1px);
 }
 
+.footer-links {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .menu-toggle {
   display: none;
   padding: 10px 14px;
@@ -1459,8 +1464,8 @@ button,
 
 .product-stage-shell {
   position: sticky;
-  top: 108px;
-  height: 560px;
+  top: 92px;
+  height: min(604px, calc(100vh - 112px));
   align-self: start;
   border-radius: 34px;
   box-shadow: var(--shadow);
@@ -1470,7 +1475,7 @@ button,
   position: relative;
   height: 100%;
   min-height: 0;
-  padding: 24px;
+  padding: 22px;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 34px;
   background: rgba(255, 255, 255, 0.98);
@@ -1528,11 +1533,11 @@ button,
 
 .product-display {
   position: absolute;
-  inset: 78px 22px 22px;
+  inset: 72px 18px 18px;
   display: grid;
   align-content: start;
   gap: 0;
-  padding: 24px 24px 22px;
+  padding: 20px 20px 18px;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.94);
@@ -1556,14 +1561,14 @@ button,
 .product-display h3 {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  font-size: clamp(1.65rem, 2.7vw, 2.28rem);
+  font-size: clamp(1.56rem, 2.45vw, 2.08rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
 }
 
 .product-display p {
   max-width: 34rem;
-  margin: 12px 0 0;
+  margin: 10px 0 0;
 }
 
 .product-display-tags {
@@ -1571,26 +1576,27 @@ button,
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .product-display-tags span {
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  background: rgba(0, 181, 73, 0.08);
-  color: var(--brand-deep);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(17, 17, 17, 0.72);
   font-size: 0.82rem;
 }
 
 .product-inline-path {
   display: grid;
-  gap: 10px;
-  margin-top: 16px;
-  padding: 16px 16px 14px;
-  border: 1px solid rgba(0, 181, 73, 0.12);
+  gap: 8px;
+  margin-top: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 20px;
-  background: rgba(0, 181, 73, 0.04);
+  background: rgba(255, 255, 255, 0.9);
   scroll-margin-top: 120px;
 }
 
@@ -1606,16 +1612,44 @@ button,
   line-height: 1.55;
 }
 
+.product-inline-links,
+.resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-inline-links a,
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 0.78rem;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.product-inline-links a:hover,
+.resource-link:hover {
+  color: var(--text);
+  border-color: rgba(17, 17, 17, 0.14);
+  transform: translateY(-1px);
+}
+
 .product-inline-path-button {
   justify-self: start;
-  min-height: 42px;
-  padding: 0 16px;
+  min-height: 40px;
+  padding: 0 15px;
 }
 
 .product-display-list,
 .platform-list {
   padding: 0;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   list-style: none;
 }
 
@@ -1627,7 +1661,7 @@ button,
 
 .product-display-list li + li,
 .platform-list li + li {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .product-display-list li::before,
@@ -1759,6 +1793,11 @@ button,
 
 .cta-store-actions .button-secondary {
   background: rgba(255, 255, 255, 0.92);
+}
+
+.resource-links {
+  justify-content: center;
+  margin-top: 18px;
 }
 
 .site-footer {
@@ -2147,8 +2186,16 @@ button,
     padding: 32px 24px;
   }
 
+  .resource-links {
+    justify-content: center;
+  }
+
   .site-footer {
     flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
   }
 }
 
