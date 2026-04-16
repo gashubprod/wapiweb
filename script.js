@@ -21,7 +21,7 @@ const spotlights = document.querySelectorAll("[data-spotlight]");
 const productSteps = document.querySelectorAll(".product-step");
 const productPanels = document.querySelectorAll("[data-product-panel]");
 const scrollCards = document.querySelectorAll(
-  ".rail-orbit-shell, .stat, .tension-card, .product-stage-shell, .platform-column, .cta-panel"
+  ".rail-orbit-shell, .stat, .tension-card, .platform-column, .cta-panel"
 );
 
 if (menuToggle && header && nav) {
@@ -94,7 +94,7 @@ if (false && routeGlobe && routeSvg && routeLayer && routeCard && routeDock) {
       rate: "1 USD = 7.24 CNY",
       detail: "Local collection in Kenya, OTC conversion, and final payout into China rails.",
       settlement: "USDC treasury handoff",
-      timing: "RT-D+1 payout",
+      timing: "Instant payout",
       tone: "brand",
       color: "#00b549",
       from: "nairobi",
@@ -108,7 +108,7 @@ if (false && routeGlobe && routeSvg && routeLayer && routeCard && routeDock) {
       rate: "1 USD = 128.40 KES",
       detail: "Business collection in Nigeria with routed settlement into Kenyan local rails.",
       settlement: "Local payout rails",
-      timing: "Same day to D+1",
+      timing: "Instant payout",
       tone: "brand",
       color: "#00b549",
       from: "lagos",
@@ -122,7 +122,7 @@ if (false && routeGlobe && routeSvg && routeLayer && routeCard && routeDock) {
       rate: "1 USD = 7.24 CNY",
       detail: "UGX collection, OTC conversion, and treasury settlement into China corridors.",
       settlement: "Stablecoin-enabled",
-      timing: "RT-D+1 payout",
+      timing: "Instant payout",
       tone: "signal",
       color: "#ffd721",
       from: "kampala",
@@ -136,7 +136,7 @@ if (false && routeGlobe && routeSvg && routeLayer && routeCard && routeDock) {
       rate: "1 USD = 1548.20 NGN",
       detail: "Kenyan collection with treasury routing into Nigerian payout and bank transfer rails.",
       settlement: "Treasury-managed FX",
-      timing: "Same day to D+1",
+      timing: "Instant payout",
       tone: "brand",
       color: "#00b549",
       from: "nairobi",
@@ -620,7 +620,7 @@ if (routeGlobe && globeCanvas && routeSvg && routeLayer && routeCard && routeDoc
         outputCurrency: "CNY",
         detail: "Local collection in Kenya, OTC conversion, and final payout into China rails.",
         settlement: "USDC treasury handoff",
-        timing: "RT-D+1 payout",
+        timing: "Instant payout",
         tone: "brand",
         color: "#00b549",
         from: "nairobi",
@@ -636,7 +636,7 @@ if (routeGlobe && globeCanvas && routeSvg && routeLayer && routeCard && routeDoc
         outputCurrency: "KES",
         detail: "Business collection in Nigeria with routed settlement into Kenyan local rails.",
         settlement: "Local payout rails",
-        timing: "Same day to D+1",
+        timing: "Instant payout",
         tone: "brand",
         color: "#00b549",
         from: "lagos",
@@ -652,7 +652,7 @@ if (routeGlobe && globeCanvas && routeSvg && routeLayer && routeCard && routeDoc
         outputCurrency: "CNY",
         detail: "UGX collection, OTC conversion, and treasury settlement into China corridors.",
         settlement: "Stablecoin-enabled",
-        timing: "RT-D+1 payout",
+        timing: "Instant payout",
         tone: "signal",
         color: "#ffd721",
         from: "kampala",
@@ -668,7 +668,7 @@ if (routeGlobe && globeCanvas && routeSvg && routeLayer && routeCard && routeDoc
         outputCurrency: "NGN",
         detail: "Kenyan collection with treasury routing into Nigerian payout and bank transfer rails.",
         settlement: "Treasury-managed FX",
-        timing: "Same day to D+1",
+        timing: "Instant payout",
         tone: "brand",
         color: "#00b549",
         from: "nairobi",
@@ -1703,6 +1703,14 @@ if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
       return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
     };
 
+    const routeDisplayColor = (route, alpha = 0.96) => {
+      if (route.color === "#ffd721") {
+        return `rgba(194, 152, 0, ${alpha})`;
+      }
+
+      return hexToRgba(route.color, alpha);
+    };
+
     const vectorFromLatLng = (lat, lng) => {
       const latRad = toRad(lat);
       const lngRad = toRad(lng);
@@ -1886,7 +1894,8 @@ if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
     if (controls) {
       controls.enableZoom = false;
       controls.enablePan = false;
-      controls.autoRotate = false;
+      controls.autoRotate = !prefersReducedMotion;
+      controls.autoRotateSpeed = 0.68;
     }
 
     const updateRateEstimate = () => {
@@ -1984,13 +1993,13 @@ if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
         .arcEndLng("endLng")
         .arcColor((corridor) =>
           corridor.id === activeRoute.id
-            ? [hexToRgba(corridor.color, 0.9), hexToRgba(corridor.color, 0.9)]
+            ? [routeDisplayColor(corridor, 0.98), routeDisplayColor(corridor, 0.9)]
             : ["rgba(17, 17, 17, 0.08)", "rgba(17, 17, 17, 0.02)"]
         )
         .arcAltitude((corridor) => (corridor.id === activeRoute.id ? corridor.arcAltitude : 0.06))
-        .arcStroke((corridor) => (corridor.id === activeRoute.id ? 0.16 : 0.04))
-        .arcDashLength((corridor) => (corridor.id === activeRoute.id ? 0.3 : 0.12))
-        .arcDashGap((corridor) => (corridor.id === activeRoute.id ? 0.68 : 2))
+        .arcStroke((corridor) => (corridor.id === activeRoute.id ? 0.21 : 0.045))
+        .arcDashLength((corridor) => (corridor.id === activeRoute.id ? 0.36 : 0.12))
+        .arcDashGap((corridor) => (corridor.id === activeRoute.id ? 0.58 : 2))
         .arcDashAnimateTime((corridor) =>
           corridor.id === activeRoute.id ? corridor.animationMs : 0
         );
