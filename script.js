@@ -21,7 +21,7 @@ const spotlights = document.querySelectorAll("[data-spotlight]");
 const productSteps = document.querySelectorAll(".product-step");
 const productPanels = document.querySelectorAll("[data-product-panel]");
 const scrollCards = document.querySelectorAll(
-  ".rail-orbit-shell, .stat, .tension-card, .platform-column, .cta-panel"
+  ".rail-orbit-shell, .tension-card, .cta-panel"
 );
 
 if (menuToggle && header && nav) {
