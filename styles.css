@@ -10,9 +10,9 @@
   --surface-soft: #f1f1f1;
   --panel: #ffffff;
   --panel-soft: #f5fdff;
-  --panel-border: rgba(17, 17, 17, 0.08);
-  --border: rgba(17, 17, 17, 0.09);
-  --shadow: 0 24px 68px rgba(17, 17, 17, 0.08);
+  --panel-border: rgba(17, 17, 17, 0.06);
+  --border: rgba(17, 17, 17, 0.07);
+  --shadow: 0 18px 42px rgba(17, 17, 17, 0.045);
   --radius-xl: 40px;
   --radius-lg: 28px;
   --radius-md: 22px;
@@ -30,7 +30,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
   color: var(--text);
   background: var(--surface-alt);
 }
@@ -101,8 +101,8 @@ button,
   padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.96);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 10px 32px rgba(17, 17, 17, 0.05);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.035);
   backdrop-filter: blur(14px);
 }
 
@@ -175,6 +175,7 @@ button,
   min-height: 48px;
   padding: 0 18px;
   border-radius: 999px;
+  font-weight: 600;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -185,12 +186,12 @@ button,
 .button-primary {
   background: var(--brand);
   color: white;
-  box-shadow: 0 12px 24px rgba(0, 181, 73, 0.16);
+  box-shadow: 0 10px 20px rgba(0, 181, 73, 0.14);
 }
 
 .button-secondary {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.82);
   color: var(--text);
 }
 
@@ -220,7 +221,7 @@ button,
 .platform-intro h2,
 .cta-panel h2 {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.96;
@@ -276,7 +277,7 @@ button,
 .hero-proof-item strong {
   display: block;
   color: var(--brand-deep);
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -371,7 +372,7 @@ button,
   border-radius: 22px;
   background: #111111;
   color: white;
-  box-shadow: 0 18px 34px rgba(17, 17, 17, 0.14);
+  box-shadow: 0 14px 24px rgba(17, 17, 17, 0.1);
 }
 
 .store-icon {
@@ -400,7 +401,7 @@ button,
 }
 
 .store-button strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -605,7 +606,7 @@ button,
 
 .network-market-label {
   fill: rgba(17, 17, 17, 0.88);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -654,10 +655,10 @@ button,
 .network-rate-card {
   position: relative;
   padding: 12px 14px 13px;
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 14px 26px rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 22px rgba(17, 17, 17, 0.05);
   backdrop-filter: blur(16px);
   transform-origin: 50% 50%;
   transition: transform 260ms ease, box-shadow 260ms ease, opacity 260ms ease;
@@ -702,7 +703,7 @@ button,
 
 .network-rate-card h2 {
   margin: 10px 0 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.2rem, 1.8vw, 1.45rem);
   line-height: 1.06;
   letter-spacing: -0.04em;
@@ -713,7 +714,7 @@ button,
 }
 
 .network-rate-value strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   display: block;
   font-size: clamp(1.12rem, 1.7vw, 1.32rem);
   font-weight: 700;
@@ -792,18 +793,18 @@ button,
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 24px;
   align-items: center;
-  padding: 24px 28px;
-  border: 1px solid var(--border);
+  padding: 28px 30px;
+  border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: 32px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 34px rgba(17, 17, 17, 0.035);
 }
 
 .rate-check-copy h2 {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(2rem, 3.2vw, 3rem);
-  line-height: 0.98;
+  line-height: 0.94;
   letter-spacing: -0.045em;
 }
 
@@ -826,8 +827,8 @@ button,
 }
 
 .rate-field span {
-  color: var(--brand-deep);
-  font-size: 0.8rem;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -838,18 +839,18 @@ button,
   width: 100%;
   min-height: 56px;
   padding: 0 16px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 18px;
-  background: rgba(247, 247, 247, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--text);
   font: inherit;
 }
 
 .rate-field input:focus,
 .rate-field select:focus {
-  outline: 2px solid rgba(0, 181, 73, 0.18);
+  outline: 2px solid rgba(17, 17, 17, 0.08);
   outline-offset: 0;
-  border-color: rgba(0, 181, 73, 0.28);
+  border-color: rgba(17, 17, 17, 0.18);
 }
 
 .rate-check-result {
@@ -877,7 +878,7 @@ button,
 }
 
 .rate-check-result strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.3rem, 2vw, 1.8rem);
   letter-spacing: -0.04em;
   color: var(--text);
@@ -952,7 +953,7 @@ button,
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 16px 40px rgba(17, 17, 17, 0.04);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.03);
   overflow: hidden;
 }
 
@@ -964,9 +965,9 @@ button,
 
 .rail-copy h2 {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(2rem, 3.4vw, 3.3rem);
-  line-height: 0.98;
+  line-height: 0.94;
   letter-spacing: -0.045em;
 }
 
@@ -1046,11 +1047,11 @@ button,
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.98);
   color: var(--text);
-  font-family: "Roboto", sans-serif;
-  font-size: 0.72rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  box-shadow: 0 10px 18px rgba(17, 17, 17, 0.05);
+  box-shadow: 0 8px 14px rgba(17, 17, 17, 0.035);
 }
 
 .rail-ring-one .rail-chip {
@@ -1144,7 +1145,7 @@ button,
 }
 
 .rail-hub strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.06rem;
   line-height: 1.14;
   letter-spacing: -0.03em;
@@ -1186,7 +1187,7 @@ button,
   border: 1px solid var(--border);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.96);
-  font-family: "Roboto", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -1262,7 +1263,7 @@ button,
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 14px 34px rgba(17, 17, 17, 0.04);
+  box-shadow: 0 10px 24px rgba(17, 17, 17, 0.03);
   overflow: hidden;
 }
 
@@ -1287,7 +1288,7 @@ button,
 
 .stat strong {
   display: block;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 2.2rem;
   letter-spacing: -0.04em;
 }
@@ -1311,15 +1312,15 @@ button,
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: var(--shadow);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.035);
 }
 
 .tension-card-muted {
-  background: #f7f7f3;
+  background: #fafaf8;
 }
 
 .tension-card-accent {
-  background: #f9fcf6;
+  background: #fcfdfb;
 }
 
 .tension-label {
@@ -1444,7 +1445,7 @@ button,
   border-radius: 50%;
   background: rgba(0, 181, 73, 0.08);
   color: var(--brand-deep);
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
 }
@@ -1462,7 +1463,7 @@ button,
 .product-step h3,
 .platform-list strong {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.42rem;
   line-height: 1.22;
 }
@@ -1478,7 +1479,7 @@ button,
   height: min(604px, calc(100vh - 112px));
   align-self: start;
   border-radius: 34px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.03);
 }
 
 .product-stage-frame {
@@ -1486,19 +1487,14 @@ button,
   height: 100%;
   min-height: 0;
   padding: 22px;
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: 34px;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.94);
   overflow: hidden;
 }
 
 .product-stage-frame::before {
-  content: "";
-  position: absolute;
-  inset: 20px;
-  border: 1px solid rgba(17, 17, 17, 0.04);
-  border-radius: 28px;
-  pointer-events: none;
+  content: none;
 }
 
 .product-stage-chrome {
@@ -1548,10 +1544,10 @@ button,
   align-content: start;
   gap: 0;
   padding: 20px 20px 18px;
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 18px 44px rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.035);
   opacity: 0;
   transform: none;
   clip-path: inset(0 0 0 0 round 30px);
@@ -1570,9 +1566,9 @@ button,
 
 .product-display h3 {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.56rem, 2.45vw, 2.08rem);
-  line-height: 1.08;
+  line-height: 1.02;
   letter-spacing: -0.04em;
 }
 
@@ -1627,7 +1623,7 @@ button,
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 18px 44px rgba(17, 17, 17, 0.04);
+  box-shadow: 0 12px 30px rgba(17, 17, 17, 0.03);
   overflow: hidden;
 }
 
@@ -1707,7 +1703,7 @@ button,
   margin: 0 auto;
   padding: 44px;
   border-radius: 36px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 14px 32px rgba(17, 17, 17, 0.03);
   text-align: center;
 }
 
@@ -1761,7 +1757,7 @@ button,
 
 .closing-proof-item strong {
   display: block;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -1796,6 +1792,12 @@ button,
 .site-footer p {
   margin: 8px 0 0;
   color: var(--muted);
+  max-width: 28rem;
+  font-size: 0.94rem;
+}
+
+.footer-links a {
+  font-size: 0.94rem;
 }
 
 .reveal {
