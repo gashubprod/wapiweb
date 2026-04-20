@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -20,7 +20,7 @@
     <div class="page-shell">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="WapiPay home">
-          <img class="brand-logo" src="assets/existing/logo.png" alt="WapiPay" />
+          <img class="brand-logo" src="assets/existing/logo.png" alt="WapiPay" decoding="async" fetchpriority="high" />
           <span class="brand-copy">Global account anywhere</span>
         </a>
 
@@ -31,7 +31,7 @@
         <nav class="nav" id="primary-nav">
           <a href="#products">Products</a>
           <a href="https://docs.wapipay.io/">Developers</a>
-          <a href="#coverage">Coverage</a>
+          <a href="#markets">Markets</a>
           <a href="about.html">About</a>
         </nav>
 
@@ -162,29 +162,29 @@
             <div class="rail-orbit-stage" aria-hidden="true">
               <div class="rail-ring rail-ring-one">
                 <span class="rail-chip rail-chip-image rail-chip-image-mpesa">
-                  <img src="assets/existing/logos/mpesa-icon.png" alt="M-Pesa" />
+                  <img src="assets/existing/logos/mpesa-icon.png" alt="M-Pesa" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-image rail-chip-image-airtel">
-                  <img src="assets/existing/logos/airtel-money.png" alt="Airtel Money" />
+                  <img src="assets/existing/logos/airtel-money.png" alt="Airtel Money" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-image rail-chip-image-alipay">
-                  <img src="assets/existing/logos/alipay.png" alt="" />
+                  <img src="assets/existing/logos/alipay.png" alt="" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-word rail-chip-word-bank">Bank transfer</span>
               </div>
 
               <div class="rail-ring rail-ring-two">
                 <span class="rail-chip rail-chip-image rail-chip-image-wechat">
-                  <img src="assets/existing/logos/wechatpay.png" alt="" />
+                  <img src="assets/existing/logos/wechatpay.png" alt="" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-image rail-chip-image-visa">
-                  <img src="assets/existing/logos/visa.png" alt="" />
+                  <img src="assets/existing/logos/visa.png" alt="" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-image rail-chip-image-mastercard">
-                  <img src="assets/existing/logos/mastercard.png" alt="" />
+                  <img src="assets/existing/logos/mastercard.png" alt="" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-image rail-chip-image-unionpay">
-                  <img src="assets/existing/logos/unionpay.png" alt="" />
+                  <img src="assets/existing/logos/unionpay.png" alt="" loading="lazy" decoding="async" />
                 </span>
                 <span class="rail-chip rail-chip-word rail-chip-word-stable">USDC / USDT</span>
               </div>
@@ -241,8 +241,8 @@
           </div>
         </section>
 
-        <section class="section reveal" id="products">
-          <div class="section-heading">
+        <section class="section reveal">
+          <div class="section-heading" id="products">
             <p class="eyebrow">Products</p>
             <h2><span class="text-reveal">Three products. One WapiPay platform.</span></h2>
           </div>
@@ -354,9 +354,9 @@
           </div>
         </section>
 
-        <section class="section platform-band reveal" id="coverage">
+        <section class="section platform-band reveal">
           <div class="platform-band-shell">
-            <div class="platform-intro">
+            <div class="platform-intro" id="markets">
               <p class="eyebrow eyebrow-light">Connected Rails</p>
               <h2><span class="text-reveal text-reveal-light">Built to keep the promise all the way through.</span></h2>
               <p>WapiPay connects local payment methods, payout rails, and settlement in one movement layer.</p>
@@ -494,13 +494,13 @@
             </div>
             <footer class="site-footer">
               <div>
-                <img class="footer-logo" src="assets/existing/logo.png" alt="WapiPay" />
+                <img class="footer-logo" src="assets/existing/logo.png" alt="WapiPay" loading="lazy" decoding="async" />
                 <p>Where in the world do you pay? WapiPay keeps the promise with you.</p>
               </div>
               <div class="footer-links">
                 <a href="#products">Products</a>
                 <a href="https://docs.wapipay.io/">Developers</a>
-                <a href="#coverage">Coverage</a>
+                <a href="#markets">Markets</a>
                 <a href="about.html">About</a>
                 <a href="https://docs.wapipay.io/docs/contact-us">Contact Us</a>
                 <a href="https://docs.wapipay.io/docs/f-a-q">FAQ</a>
@@ -512,8 +512,6 @@
       </main>
     </div>
 
-    <script src="vendor/three.min.js" defer></script>
-    <script src="vendor/globe.gl.min.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>

@@ -23,6 +23,87 @@ const productPanels = document.querySelectorAll("[data-product-panel]");
 const scrollCards = document.querySelectorAll(
   ".rail-orbit-shell, .tension-card, .cta-panel"
 );
+const sharedRouteRates = new Map([
+  [
+    "lagos-nairobi",
+    { rate: "1 USD = 128.40 KES", multiplier: 128.4, outputCurrency: "KES" },
+  ],
+  [
+    "nairobi-guangzhou",
+    { rate: "1 USD = 7.24 CNY", multiplier: 7.24, outputCurrency: "CNY" },
+  ],
+  [
+    "kampala-guangzhou",
+    { rate: "1 USD = 7.24 CNY", multiplier: 7.24, outputCurrency: "CNY" },
+  ],
+  [
+    "nairobi-lagos",
+    { rate: "1 USD = 1548.20 NGN", multiplier: 1548.2, outputCurrency: "NGN" },
+  ],
+]);
+const liveGlobeScriptCache = new Map();
+const desktopGlobeMedia = window.matchMedia("(min-width: 981px)");
+let liveGlobeInitialized = false;
+let liveGlobeRequested = false;
+
+const formatRateAmount = (value) =>
+  new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+
+const syncRateEstimate = (preferredRouteId = null) => {
+  if (!rateOutput || !rateMeta || !rateAmountInput || !rateRouteSelect) return;
+
+  const selectedRoute =
+    sharedRouteRates.get(preferredRouteId || rateRouteSelect.value) ||
+    sharedRouteRates.values().next().value;
+  const amount = Math.max(Number(rateAmountInput.value) || 0, 0);
+  const received = amount * selectedRoute.multiplier;
+
+  rateOutput.textContent = `${formatRateAmount(received)} ${selectedRoute.outputCurrency}`;
+  rateMeta.textContent = `Indicative rate ${selectedRoute.rate}`;
+};
+
+const loadExternalScript = (src, isReady) => {
+  if (isReady()) return Promise.resolve();
+
+  const existingPromise = liveGlobeScriptCache.get(src);
+  if (existingPromise) return existingPromise;
+
+  const promise = new Promise((resolve, reject) => {
+    const existingTag = document.querySelector(`script[src="${src}"]`);
+
+    if (existingTag) {
+      existingTag.addEventListener("load", () => resolve(), { once: true });
+      existingTag.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(script);
+  });
+
+  liveGlobeScriptCache.set(src, promise);
+  return promise;
+};
+
+const loadLiveGlobeAssets = async () => {
+  await loadExternalScript("vendor/three.min.js", () => Boolean(window.THREE));
+  await loadExternalScript("vendor/globe.gl.min.js", () => Boolean(window.Globe));
+};
+
+if (rateForm && rateAmountInput && rateRouteSelect) {
+  rateAmountInput.addEventListener("input", () => syncRateEstimate());
+  rateRouteSelect.addEventListener("change", () => syncRateEstimate());
+  syncRateEstimate();
+}
 
 if (menuToggle && header && nav) {
   menuToggle.addEventListener("click", () => {
@@ -1663,7 +1744,14 @@ const counterObserver = new IntersectionObserver(
 
 statCounters.forEach((counter) => counterObserver.observe(counter));
 
-if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
+const initLiveGlobe = () => {
+  if (liveGlobeInitialized || !routeGlobe || !globeRender || !routeCard || !routeDock || !window.Globe) {
+    return;
+  }
+
+  liveGlobeInitialized = true;
+  routeGlobe.classList.add("has-live-globe");
+
   try {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const routeTitleEl = routeCard.querySelector("[data-route-title]");
@@ -2156,5 +2244,52 @@ if (routeGlobe && globeRender && routeCard && routeDock && window.Globe) {
     globeFrame = window.requestAnimationFrame(updateOverlay);
   } catch (error) {
     console.error("Wapi globe init failed", error);
+  }
+};
+
+if (routeGlobe && globeRender && routeCard && routeDock) {
+  const beginLiveGlobe = () => {
+    if (!desktopGlobeMedia.matches || liveGlobeRequested || liveGlobeInitialized) return;
+
+    liveGlobeRequested = true;
+
+    loadLiveGlobeAssets()
+      .then(() => {
+        initLiveGlobe();
+      })
+      .catch((error) => {
+        liveGlobeRequested = false;
+        console.error("Wapi globe assets failed to load", error);
+      });
+  };
+
+  if (desktopGlobeMedia.matches) {
+    if ("IntersectionObserver" in window) {
+      const heroGlobeObserver = new IntersectionObserver(
+        (entries, observer) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            beginLiveGlobe();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "220px 0px" }
+      );
+
+      heroGlobeObserver.observe(routeGlobe);
+    } else {
+      beginLiveGlobe();
+    }
+  }
+
+  const handleGlobeMediaChange = (event) => {
+    if (event.matches) {
+      beginLiveGlobe();
+    }
+  };
+
+  if (typeof desktopGlobeMedia.addEventListener === "function") {
+    desktopGlobeMedia.addEventListener("change", handleGlobeMediaChange);
+  } else if (typeof desktopGlobeMedia.addListener === "function") {
+    desktopGlobeMedia.addListener(handleGlobeMediaChange);
   }
 }
