@@ -14,6 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="vendor/three.min.js" as="script" />
+    <link rel="preload" href="vendor/globe.gl.min.js" as="script" />
+    <link rel="preload" href="assets/world.geojson" as="fetch" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -32,8 +35,19 @@
           <span class="brand-copy">Global account anywhere</span>
         </a>
 
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-          Menu
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open navigation"
+        >
+          <span class="sr-only">Menu</span>
+          <span class="menu-toggle-box" aria-hidden="true">
+            <span class="menu-toggle-bar"></span>
+            <span class="menu-toggle-bar"></span>
+            <span class="menu-toggle-bar"></span>
+          </span>
         </button>
 
         <nav class="nav" id="primary-nav">
@@ -50,7 +64,7 @@
       </header>
 
       <main id="top">
-        <section class="hero section reveal">
+        <section class="hero section reveal is-visible">
           <div class="hero-copy">
             <p class="eyebrow">Where in the world do you pay?</p>
             <h1><span class="text-reveal">Cross-border money should move with speed, clarity, and control.</span></h1>
@@ -542,6 +556,8 @@
       </main>
     </div>
 
+    <script src="vendor/three.min.js" defer></script>
+    <script src="vendor/globe.gl.min.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>

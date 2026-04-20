@@ -37,10 +37,12 @@ const sharedRouteRates = new Map([
     { rate: "1 USD = 1548.20 NGN", multiplier: 1548.2, outputCurrency: "NGN" },
   ],
 ]);
-const liveGlobeScriptCache = new Map();
 const desktopGlobeMedia = window.matchMedia("(min-width: 981px)");
 let liveGlobeInitialized = false;
-let liveGlobeRequested = false;
+const globeGeoDataPromise = fetch("assets/world.geojson")
+  .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
+  .then((data) => (Array.isArray(data.features) ? data.features : []))
+  .catch(() => []);
 
 const formatRateAmount = (value) =>
   new Intl.NumberFormat("en-US", {
@@ -61,40 +63,6 @@ const syncRateEstimate = (preferredRouteId = null) => {
   rateMeta.textContent = `Indicative rate ${selectedRoute.rate}`;
 };
 
-const loadExternalScript = (src, isReady) => {
-  if (isReady()) return Promise.resolve();
-
-  const existingPromise = liveGlobeScriptCache.get(src);
-  if (existingPromise) return existingPromise;
-
-  const promise = new Promise((resolve, reject) => {
-    const existingTag = document.querySelector(`script[src="${src}"]`);
-
-    if (existingTag) {
-      existingTag.addEventListener("load", () => resolve(), { once: true });
-      existingTag.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
-        once: true,
-      });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load ${src}`));
-    document.head.appendChild(script);
-  });
-
-  liveGlobeScriptCache.set(src, promise);
-  return promise;
-};
-
-const loadLiveGlobeAssets = async () => {
-  await loadExternalScript("vendor/three.min.js", () => Boolean(window.THREE));
-  await loadExternalScript("vendor/globe.gl.min.js", () => Boolean(window.Globe));
-};
-
 if (rateForm && rateAmountInput && rateRouteSelect) {
   rateAmountInput.addEventListener("input", () => syncRateEstimate());
   rateRouteSelect.addEventListener("change", () => syncRateEstimate());
@@ -105,12 +73,14 @@ if (menuToggle && header && nav) {
   menuToggle.addEventListener("click", () => {
     const isOpen = header.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
   });
 
   nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       header.classList.remove("is-open");
       menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
     });
   });
 }
@@ -284,13 +254,11 @@ const initLiveGlobe = () => {
   }
 
   liveGlobeInitialized = true;
-  routeGlobe.classList.add("has-live-globe");
 
   try {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const routeTitleEl = routeCard.querySelector("[data-route-title]");
     const routeRateEl = routeCard.querySelector("[data-route-rate]");
-    const geoJsonUrl = "assets/world.geojson";
     let activeRouteId = "lagos-nairobi";
     let activeRoute = null;
     let cycleInterval = null;
@@ -475,6 +443,11 @@ const initLiveGlobe = () => {
 
     const routeById = new Map(routes.map((route) => [route.id, route]));
     const cityTags = new Map();
+    const cityTagPositions = new Map();
+    const overlayThrottleMs = 1000 / 30;
+    const overlayPositionThreshold = 1.25;
+    let lastOverlayFrameTime = 0;
+    let lastDockPosition = null;
 
     Object.values(markets).forEach((market) => {
       const tag = document.createElement("div");
@@ -496,11 +469,11 @@ const initLiveGlobe = () => {
       .height(globeRender.clientHeight || 560)
       .backgroundColor("rgba(0,0,0,0)")
       .showAtmosphere(false)
-      .showGraticules(true)
+      .showGraticules(false)
       .enablePointerInteraction(false)
-      .pointsTransitionDuration(240)
-      .arcsTransitionDuration(520)
-      .polygonsTransitionDuration(520);
+      .pointsTransitionDuration(0)
+      .arcsTransitionDuration(0)
+      .polygonsTransitionDuration(0);
 
     const material = globe.globeMaterial && globe.globeMaterial();
     if (material) {
@@ -516,7 +489,7 @@ const initLiveGlobe = () => {
       controls.enableZoom = false;
       controls.enablePan = false;
       controls.autoRotate = !prefersReducedMotion;
-      controls.autoRotateSpeed = 0.68;
+      controls.autoRotateSpeed = 0.56;
     }
 
     const updateRateEstimate = () => {
@@ -565,10 +538,12 @@ const initLiveGlobe = () => {
         markets[activeRoute.from].country,
         markets[activeRoute.to].country,
       ]);
-      const marketPoints = Object.values(markets).map((market) => ({
-        ...market,
-        active: market.id === activeRoute.from || market.id === activeRoute.to,
-      }));
+      const activeMarketPoints = [markets[activeRoute.from], markets[activeRoute.to]].map(
+        (market) => ({
+          ...market,
+          active: true,
+        })
+      );
 
       globe
         .polygonsData(countryFeatures)
@@ -586,44 +561,27 @@ const initLiveGlobe = () => {
         .polygonAltitude((feature) =>
           activeCountries.has(getCountryName(feature)) ? 0.006 : 0.0015
         )
-        .pointsData(marketPoints)
+        .pointsData(activeMarketPoints)
         .pointLat("lat")
         .pointLng("lng")
-        .pointColor((point) =>
-          point.active ? hexToRgba(activeRoute.color, 0.96) : "rgba(17, 17, 17, 0.16)"
-        )
-        .pointAltitude((point) => (point.active ? 0.022 : 0.006))
-        .pointRadius((point) => (point.active ? 0.34 : 0.12))
-        .ringsData(
-          [markets[activeRoute.from], markets[activeRoute.to]].map((market) => ({
-            lat: market.lat,
-            lng: market.lng,
-            color: activeRoute.color,
-          }))
-        )
-        .ringLat("lat")
-        .ringLng("lng")
-        .ringColor((ring) => [hexToRgba(ring.color, 0.24), hexToRgba(ring.color, 0)])
-        .ringMaxRadius(2.3)
-        .ringPropagationSpeed(1.05)
-        .ringRepeatPeriod(1800)
-        .arcsData(routes)
+        .pointColor(() => hexToRgba(activeRoute.color, 0.96))
+        .pointAltitude(() => 0.022)
+        .pointRadius(() => 0.34)
+        .ringsData([])
+        .arcsData([activeRoute])
         .arcStartLat("startLat")
         .arcStartLng("startLng")
         .arcEndLat("endLat")
         .arcEndLng("endLng")
-        .arcColor((corridor) =>
-          corridor.id === activeRoute.id
-            ? [routeDisplayColor(corridor, 0.98), routeDisplayColor(corridor, 0.9)]
-            : ["rgba(17, 17, 17, 0.08)", "rgba(17, 17, 17, 0.02)"]
-        )
-        .arcAltitude((corridor) => (corridor.id === activeRoute.id ? corridor.arcAltitude : 0.06))
-        .arcStroke((corridor) => (corridor.id === activeRoute.id ? 0.21 : 0.045))
-        .arcDashLength((corridor) => (corridor.id === activeRoute.id ? 0.36 : 0.12))
-        .arcDashGap((corridor) => (corridor.id === activeRoute.id ? 0.58 : 2))
-        .arcDashAnimateTime((corridor) =>
-          corridor.id === activeRoute.id ? corridor.animationMs : 0
-        );
+        .arcColor((corridor) => [
+          routeDisplayColor(corridor, 0.98),
+          routeDisplayColor(corridor, 0.9),
+        ])
+        .arcAltitude((corridor) => corridor.arcAltitude)
+        .arcStroke(() => 0.21)
+        .arcDashLength(() => 0.36)
+        .arcDashGap(() => 0.58)
+        .arcDashAnimateTime((corridor) => corridor.animationMs);
     };
 
     const setCityTagPosition = (marketId) => {
@@ -637,6 +595,7 @@ const initLiveGlobe = () => {
 
       if (!point) {
         tag.classList.remove("is-visible");
+        cityTagPositions.delete(marketId);
         return;
       }
 
@@ -650,11 +609,24 @@ const initLiveGlobe = () => {
 
       if (!inside) {
         tag.classList.remove("is-visible");
+        cityTagPositions.delete(marketId);
         return;
       }
 
-      tag.style.left = `${localX.toFixed(2)}px`;
-      tag.style.top = `${(localY - 18).toFixed(2)}px`;
+      const nextX = Number(localX.toFixed(2));
+      const nextY = Number((localY - 18).toFixed(2));
+      const previousPosition = cityTagPositions.get(marketId);
+
+      if (
+        !previousPosition ||
+        Math.abs(previousPosition.x - nextX) > overlayPositionThreshold ||
+        Math.abs(previousPosition.y - nextY) > overlayPositionThreshold
+      ) {
+        tag.style.left = `${nextX}px`;
+        tag.style.top = `${nextY}px`;
+        cityTagPositions.set(marketId, { x: nextX, y: nextY });
+      }
+
       tag.classList.add("is-visible");
     };
 
@@ -693,17 +665,25 @@ const initLiveGlobe = () => {
       dockLocalLeft = clamp(dockLocalLeft, margin, globeRect.width - dockWidth - margin);
       dockLocalTop = clamp(dockLocalTop, margin, globeRect.height - dockHeight - margin);
 
-      routeDock.style.setProperty(
-        "--dock-x",
-        `${(globeRect.left - frameRect.left + dockLocalLeft).toFixed(2)}px`
+      const nextDockX = Number(
+        (globeRect.left - frameRect.left + dockLocalLeft).toFixed(2)
       );
-      routeDock.style.setProperty(
-        "--dock-y",
-        `${(globeRect.top - frameRect.top + dockLocalTop).toFixed(2)}px`
+      const nextDockY = Number(
+        (globeRect.top - frameRect.top + dockLocalTop).toFixed(2)
       );
+
+      if (
+        !lastDockPosition ||
+        Math.abs(lastDockPosition.x - nextDockX) > overlayPositionThreshold ||
+        Math.abs(lastDockPosition.y - nextDockY) > overlayPositionThreshold
+      ) {
+        routeDock.style.setProperty("--dock-x", `${nextDockX}px`);
+        routeDock.style.setProperty("--dock-y", `${nextDockY}px`);
+        lastDockPosition = { x: nextDockX, y: nextDockY };
+      }
     };
 
-    function setActiveRoute(routeId, isUserInitiated) {
+    function setActiveRoute(routeId, isUserInitiated, animateCard = true) {
       const route = routeById.get(routeId);
 
       if (!route) return;
@@ -716,8 +696,12 @@ const initLiveGlobe = () => {
       if (routeTitleEl) routeTitleEl.textContent = route.title;
       if (routeRateEl) routeRateEl.textContent = route.rate;
 
-      routeCard.classList.add("is-updating");
       window.clearTimeout(cardUpdateTimer);
+      if (animateCard) {
+        routeCard.classList.add("is-updating");
+      } else {
+        routeCard.classList.remove("is-updating");
+      }
       syncScene();
       globe.pointOfView(route.focus, prefersReducedMotion ? 0 : 1200);
 
@@ -726,17 +710,23 @@ const initLiveGlobe = () => {
         updateRateEstimate();
       }
 
-      cardUpdateTimer = window.setTimeout(() => {
-        routeCard.classList.remove("is-updating");
-      }, 220);
+      if (animateCard) {
+        cardUpdateTimer = window.setTimeout(() => {
+          routeCard.classList.remove("is-updating");
+        }, 220);
+      }
 
       if (isUserInitiated) {
         pauseCycle();
       }
     }
 
-    const updateOverlay = () => {
-      if (activeRoute) {
+    const updateOverlay = (timestamp = 0) => {
+      if (
+        activeRoute &&
+        (!lastOverlayFrameTime || timestamp - lastOverlayFrameTime >= overlayThrottleMs)
+      ) {
+        lastOverlayFrameTime = timestamp;
         setCityTagPosition(activeRoute.from);
         setCityTagPosition(activeRoute.to);
         updateDockPosition();
@@ -748,6 +738,8 @@ const initLiveGlobe = () => {
     const resizeGlobe = () => {
       const width = globeRender.clientWidth || 560;
       const height = globeRender.clientHeight || width;
+      lastDockPosition = null;
+      cityTagPositions.clear();
       globe.width(width).height(height);
       updateDockPosition();
     };
@@ -759,23 +751,16 @@ const initLiveGlobe = () => {
       });
     }
 
-    fetch(geoJsonUrl)
-      .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
-      .then((data) => {
-        countryFeatures = Array.isArray(data.features) ? data.features : [];
-        syncScene();
-      })
-      .catch(() => {
-        countryFeatures = [];
-        syncScene();
-      });
-
     window.addEventListener("resize", resizeGlobe);
-    setActiveRoute(activeRouteId, false);
-    updateRateEstimate();
-    resizeGlobe();
-    startCycle();
-    globeFrame = window.requestAnimationFrame(updateOverlay);
+    globeGeoDataPromise.then((features) => {
+      countryFeatures = features;
+      setActiveRoute(activeRouteId, false, false);
+      updateRateEstimate();
+      resizeGlobe();
+      routeGlobe.classList.add("is-globe-ready");
+      startCycle();
+      globeFrame = window.requestAnimationFrame(updateOverlay);
+    });
   } catch (error) {
     console.error("Wapi globe init failed", error);
   }
@@ -783,41 +768,22 @@ const initLiveGlobe = () => {
 
 if (routeGlobe && globeRender && routeCard && routeDock) {
   const beginLiveGlobe = () => {
-    if (!desktopGlobeMedia.matches || liveGlobeRequested || liveGlobeInitialized) return;
+    if (!desktopGlobeMedia.matches || liveGlobeInitialized || !window.Globe) return;
+    initLiveGlobe();
+  };
 
-    liveGlobeRequested = true;
-
-    loadLiveGlobeAssets()
-      .then(() => {
-        initLiveGlobe();
-      })
-      .catch((error) => {
-        liveGlobeRequested = false;
-        console.error("Wapi globe assets failed to load", error);
-      });
+  const queueLiveGlobe = () => {
+    if (!desktopGlobeMedia.matches || liveGlobeInitialized) return;
+    beginLiveGlobe();
   };
 
   if (desktopGlobeMedia.matches) {
-    if ("IntersectionObserver" in window) {
-      const heroGlobeObserver = new IntersectionObserver(
-        (entries, observer) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            beginLiveGlobe();
-            observer.disconnect();
-          }
-        },
-        { rootMargin: "220px 0px" }
-      );
-
-      heroGlobeObserver.observe(routeGlobe);
-    } else {
-      beginLiveGlobe();
-    }
+    queueLiveGlobe();
   }
 
   const handleGlobeMediaChange = (event) => {
     if (event.matches) {
-      beginLiveGlobe();
+      queueLiveGlobe();
     }
   };
 
