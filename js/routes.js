@@ -1,0 +1,183 @@
+(function attachWapiRoutes(global) {
+  const MARKET_DEFINITIONS = {
+    lagos: {
+      id: "lagos",
+      label: "Lagos",
+      country: "Nigeria",
+      lat: 6.5244,
+      lng: 3.3792,
+    },
+    kampala: {
+      id: "kampala",
+      label: "Kampala",
+      country: "Uganda",
+      lat: 0.3476,
+      lng: 32.5825,
+    },
+    darEsSalaam: {
+      id: "darEsSalaam",
+      label: "Dar es Salaam",
+      country: "Tanzania",
+      lat: -6.7924,
+      lng: 39.2083,
+    },
+    nairobi: {
+      id: "nairobi",
+      label: "Nairobi",
+      country: "Kenya",
+      lat: -1.286389,
+      lng: 36.817223,
+    },
+    london: {
+      id: "london",
+      label: "London",
+      country: "United Kingdom",
+      lat: 51.5072,
+      lng: -0.1276,
+    },
+    newYork: {
+      id: "newYork",
+      label: "New York",
+      country: "United States",
+      lat: 40.7128,
+      lng: -74.006,
+    },
+    mumbai: {
+      id: "mumbai",
+      label: "Mumbai",
+      country: "India",
+      lat: 19.076,
+      lng: 72.8777,
+    },
+    guangzhou: {
+      id: "guangzhou",
+      label: "Guangzhou",
+      country: "China",
+      lat: 23.1291,
+      lng: 113.2644,
+    },
+  };
+
+  const ROUTE_DEFINITIONS = [
+    {
+      id: "nairobi-dar-es-salaam",
+      title: "Nairobi to Dar es Salaam",
+      rate: "1 USD = 2589.00 TZS",
+      heroRate: "1 KES = 20.16 TZS",
+      multiplier: 2589,
+      outputCurrency: "TZS",
+      color: "#00b549",
+      from: "nairobi",
+      to: "darEsSalaam",
+      arcAltitude: 0.1,
+      animationMs: 2600,
+      focus: { lat: -3.8, lng: 38.3, altitude: 1.28 },
+    },
+    {
+      id: "nairobi-kampala",
+      title: "Nairobi to Kampala",
+      rate: "1 USD = 3740.00 UGX",
+      heroRate: "1 KES = 29.13 UGX",
+      multiplier: 3740,
+      outputCurrency: "UGX",
+      color: "#00b549",
+      from: "nairobi",
+      to: "kampala",
+      arcAltitude: 0.1,
+      animationMs: 2600,
+      focus: { lat: -0.4, lng: 34.8, altitude: 1.24 },
+    },
+    {
+      id: "nairobi-mumbai",
+      title: "Nairobi to Mumbai",
+      rate: "1 USD = 83.10 INR",
+      heroRate: "1 INR = 1.54 KES",
+      multiplier: 83.1,
+      outputCurrency: "INR",
+      color: "#00b549",
+      from: "nairobi",
+      to: "mumbai",
+      arcAltitude: 0.22,
+      animationMs: 3300,
+      focus: { lat: 10.6, lng: 55.4, altitude: 1.6 },
+    },
+    {
+      id: "nairobi-london",
+      title: "Nairobi to London",
+      rate: "1 USD = 0.79 GBP",
+      heroRate: "1 GBP = 161.29 KES",
+      multiplier: 0.79,
+      outputCurrency: "GBP",
+      color: "#00b549",
+      from: "nairobi",
+      to: "london",
+      arcAltitude: 0.26,
+      animationMs: 3400,
+      focus: { lat: 26.8, lng: 18.6, altitude: 1.8 },
+    },
+    {
+      id: "nairobi-new-york",
+      title: "Nairobi to New York",
+      rate: "1 USD = 1.00 USD",
+      heroRate: "1 USD = 128.40 KES",
+      multiplier: 1,
+      outputCurrency: "USD",
+      color: "#00b549",
+      from: "nairobi",
+      to: "newYork",
+      arcAltitude: 0.31,
+      animationMs: 3600,
+      focus: { lat: 22.6, lng: -22.4, altitude: 1.95 },
+    },
+    {
+      id: "nairobi-guangzhou",
+      title: "Nairobi to Guangzhou",
+      rate: "1 USD = 7.24 CNY",
+      heroRate: "1 CNY = 17.86 KES",
+      multiplier: 7.24,
+      outputCurrency: "CNY",
+      color: "#00b549",
+      from: "nairobi",
+      to: "guangzhou",
+      arcAltitude: 0.22,
+      animationMs: 3300,
+      focus: { lat: 12.4, lng: 73.8, altitude: 1.62 },
+    },
+    {
+      id: "nairobi-lagos",
+      title: "Nairobi to Lagos",
+      rate: "1 USD = 1548.20 NGN",
+      heroRate: "1 KES = 12.06 NGN",
+      multiplier: 1548.2,
+      outputCurrency: "NGN",
+      color: "#00b549",
+      from: "nairobi",
+      to: "lagos",
+      arcAltitude: 0.18,
+      animationMs: 3000,
+      focus: { lat: 4.4, lng: 19.8, altitude: 1.56 },
+    },
+  ];
+
+  const DEFAULT_ROUTE_ID = "nairobi-mumbai";
+  const sharedRouteRates = new Map(
+    ROUTE_DEFINITIONS.map(({ id, rate, multiplier, outputCurrency }) => [
+      id,
+      { rate, multiplier, outputCurrency },
+    ])
+  );
+
+  const formatRateAmount = (value) =>
+    new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+
+  global.WapiRoutes = {
+    DEFAULT_ROUTE_ID,
+    MARKET_DEFINITIONS,
+    ROUTE_DEFINITIONS,
+    sharedRouteRates,
+    formatRateAmount,
+  };
+})(window);
