@@ -131,7 +131,7 @@
   }
 
   .promise-stage {
-    min-height: 392px;
+    min-height: 420px;
   }
 
   .promise-photo-main {
@@ -147,24 +147,24 @@
   }
 
   .promise-route-line {
-    left: 128px;
-    right: 128px;
-    top: 182px;
+    left: 132px;
+    right: 118px;
+    top: 208px;
   }
 
   .promise-route-dot {
-    left: 140px;
-    top: 173px;
+    left: 144px;
+    top: 201px;
   }
 
   .promise-note-send {
-    top: 52px;
-    left: 114px;
+    top: 58px;
+    left: 118px;
   }
 
   .promise-note-received {
-    right: 24px;
-    bottom: 20px;
+    right: 28px;
+    bottom: 24px;
   }
 
   .rate-check-result {
@@ -318,7 +318,7 @@
   }
 
   .promise-stage {
-    min-height: 360px;
+    min-height: 384px;
     border-radius: 28px;
   }
 
@@ -339,24 +339,24 @@
   }
 
   .promise-route-line {
-    left: 100px;
-    right: 94px;
-    top: 172px;
+    left: 104px;
+    right: 92px;
+    top: 186px;
   }
 
   .promise-route-dot {
-    left: 110px;
-    top: 164px;
+    left: 114px;
+    top: 179px;
   }
 
   .promise-note-send {
-    top: 48px;
-    left: 86px;
+    top: 52px;
+    left: 88px;
   }
 
   .promise-note-received {
     right: 16px;
-    bottom: 16px;
+    bottom: 20px;
   }
 
 
@@ -452,7 +452,7 @@
   }
 
   .promise-stage {
-    min-height: 338px;
+    min-height: 352px;
   }
 
   .promise-photo-main {
@@ -464,14 +464,14 @@
   }
 
   .promise-route-line {
-    left: 88px;
-    right: 82px;
-    top: 162px;
+    left: 90px;
+    right: 80px;
+    top: 170px;
   }
 
   .promise-route-dot {
-    left: 98px;
-    top: 154px;
+    left: 100px;
+    top: 163px;
   }
 
   .promise-note {
@@ -488,8 +488,8 @@
   }
 
   .promise-note-send {
-    top: 42px;
-    left: 72px;
+    top: 44px;
+    left: 74px;
   }
 
   .promise-note-received {

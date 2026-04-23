@@ -810,8 +810,8 @@ button,
 
 .promise-shell {
   display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-  gap: 38px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 44px;
   align-items: center;
   padding: 40px 0;
   border-top: 1px solid rgba(17, 17, 17, 0.08);
@@ -864,13 +864,45 @@ button,
 
 .promise-stage {
   position: relative;
-  width: min(100%, 500px);
-  min-height: 320px;
+  width: min(100%, 560px);
+  min-height: 404px;
   border: 1px solid rgba(17, 17, 17, 0.07);
   border-radius: 34px;
   background: linear-gradient(180deg, #ffffff 0%, #fcfcfc 100%);
   box-shadow: 0 18px 36px rgba(17, 17, 17, 0.035);
   overflow: hidden;
+}
+
+.promise-stage-media {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.promise-stage-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(17, 17, 17, 0.18) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 28%);
+}
+
+.promise-stage-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 26%;
+  transform: scale(1.05);
+  transform-origin: center center;
+  transition: transform 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: saturate(0.94) contrast(0.98);
+}
+
+.reveal.is-visible .promise-stage-image {
+  transform: scale(1);
 }
 
 .promise-stage::before,
@@ -952,14 +984,15 @@ button,
 .promise-route {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
 .promise-route-line {
   position: absolute;
-  left: 92px;
-  right: 92px;
-  top: 160px;
+  left: 104px;
+  right: 96px;
+  top: 198px;
   height: 1px;
   background: rgba(17, 17, 17, 0.12);
   transform: none;
@@ -977,8 +1010,8 @@ button,
 
 .promise-route-dot {
   position: absolute;
-  left: 104px;
-  top: 154px;
+  left: 116px;
+  top: 192px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -989,7 +1022,7 @@ button,
 
 .promise-note {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   gap: 4px;
   padding: 12px 14px;
@@ -1014,14 +1047,14 @@ button,
 }
 
 .promise-note-send {
-  top: 72px;
-  left: 68px;
+  top: 78px;
+  left: 74px;
   animation: promise-card-float 5.2s ease-in-out infinite;
 }
 
 .promise-note-received {
-  right: 52px;
-  bottom: 52px;
+  right: 44px;
+  bottom: 48px;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 10px;
