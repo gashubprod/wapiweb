@@ -34,7 +34,7 @@
   }
 
   .hero-proof-band {
-    gap: 12px;
+    gap: 12px 18px;
   }
 
   .tension-grid {
@@ -42,7 +42,7 @@
   }
 
   .hero-stage-frame {
-    min-height: 540px;
+    min-height: 520px;
   }
 
   .network-globe {
@@ -105,6 +105,10 @@
 
   .promise-visual {
     justify-content: center;
+  }
+
+  .brand-rail {
+    padding-top: 32px;
   }
 
 }
@@ -196,6 +200,14 @@
   .about-card-grid {
     grid-template-columns: 1fr;
   }
+
+  .promise-section {
+    padding-top: 34px;
+  }
+
+  .tension-section {
+    padding-top: 46px;
+  }
 }
 
 @media (max-width: 820px) {
@@ -217,8 +229,8 @@
   }
 
   .hero {
-    gap: 24px;
-    padding-top: 48px;
+    gap: 22px;
+    padding-top: 40px;
   }
 
   .about-hero {
@@ -260,22 +272,31 @@
   }
 
   .hero-copy h1 {
-    max-width: none;
-    font-size: clamp(2.8rem, 15vw, 4.35rem);
+    max-width: 10.5ch;
+    font-size: clamp(2.65rem, 14vw, 4.1rem);
   }
 
   .hero-proof-band {
-    gap: 10px;
+    gap: 10px 16px;
+    padding-top: 12px;
   }
 
   .hero-support {
     width: 100%;
-    margin-top: 14px;
+    margin-top: 16px;
     margin-left: 0;
   }
 
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .button-secondary {
+    padding-inline: 0;
+  }
+
   .hero-stage-frame {
-    min-height: 500px;
+    min-height: 488px;
   }
 
   .network-globe {
@@ -395,7 +416,7 @@
 
   .product-step {
     min-height: auto;
-    padding-top: 16px;
+    padding-top: 14px;
   }
 
   .stats-band {
