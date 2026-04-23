@@ -57,7 +57,7 @@ body::after {
   aspect-ratio: 1;
   pointer-events: none;
   border-radius: 50%;
-  background: url("assets/existing/map.webp") center/132% auto no-repeat;
+  background: url("../assets/existing/map.webp") center/132% auto no-repeat;
   opacity: 0.012;
   filter: grayscale(1) saturate(0.45) blur(0.8px);
   transform: translateX(-50%);
