@@ -27,7 +27,6 @@
   .hero,
   .about-hero-shell,
   .about-quote-shell,
-  .promise-shell,
   .product-story,
   .platform-columns {
     grid-template-columns: 1fr;
@@ -99,12 +98,16 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .promise-copy {
-    max-width: 760px;
+  .promise-shell {
+    gap: 28px;
   }
 
-  .promise-visual {
-    justify-content: center;
+  .promise-stage {
+    min-height: clamp(420px, 60vh, 620px);
+  }
+
+  .promise-step {
+    min-height: 72vh;
   }
 
   .brand-rail {
@@ -134,41 +137,39 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .promise-shell {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px 0 24px;
+  }
+
+  .promise-visual {
+    position: relative;
+    top: auto;
+    order: 1;
+  }
+
+  .promise-steps {
+    order: 2;
+    padding: 0;
+    gap: 18px;
+  }
+
+  .promise-step {
+    min-height: auto;
+    max-width: none;
+    padding: 0 0 0 18px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .promise-step::before {
+    top: 0;
+    height: 36px;
+  }
+
   .promise-stage {
-    min-height: 420px;
-  }
-
-  .promise-photo-main {
-    top: 24px;
-    right: 24px;
-    width: 210px;
-  }
-
-  .promise-photo-secondary {
-    left: 26px;
-    bottom: 28px;
-    width: 152px;
-  }
-
-  .promise-route-line {
-    left: 132px;
-    right: 118px;
-    top: 208px;
-  }
-
-  .promise-route-dot {
-    left: 144px;
-    top: 201px;
-  }
-
-  .promise-note-send {
-    top: 58px;
-    left: 118px;
-  }
-
-  .promise-note-received {
-    right: 28px;
-    bottom: 24px;
+    min-height: 520px;
   }
 
   .rate-check-result {
@@ -190,11 +191,19 @@
   }
 
   .product-stage-frame {
-    min-height: 520px;
+    min-height: 560px;
   }
 
   .product-step:last-child {
     min-height: auto;
+  }
+
+  .product-display-visual {
+    min-height: 170px;
+  }
+
+  .product-visual-metrics {
+    gap: 10px;
   }
 
   .about-card-grid {
@@ -334,50 +343,16 @@
   }
 
   .promise-shell {
-    gap: 24px;
-    padding: 32px 0;
+    gap: 22px;
+    padding: 18px 0 26px;
+  }
+
+  .promise-intro {
+    margin-bottom: 28px;
   }
 
   .promise-stage {
-    min-height: 384px;
-    border-radius: 28px;
-  }
-
-  .promise-photo {
-    border-radius: 24px;
-  }
-
-  .promise-photo-main {
-    top: 18px;
-    right: 18px;
-    width: min(54%, 198px);
-  }
-
-  .promise-photo-secondary {
-    left: 18px;
-    bottom: 22px;
-    width: min(34%, 132px);
-  }
-
-  .promise-route-line {
-    left: 104px;
-    right: 92px;
-    top: 186px;
-  }
-
-  .promise-route-dot {
-    left: 114px;
-    top: 179px;
-  }
-
-  .promise-note-send {
-    top: 52px;
-    left: 88px;
-  }
-
-  .promise-note-received {
-    right: 16px;
-    bottom: 20px;
+    min-height: 452px;
   }
 
 
@@ -412,6 +387,26 @@
   .product-display {
     inset: 76px 20px 20px;
     padding: 24px;
+  }
+
+  .product-display-visual {
+    min-height: 158px;
+    margin-bottom: 16px;
+  }
+
+  .product-visual-app,
+  .product-visual-board,
+  .product-visual-fx,
+  .product-visual-support {
+    padding: 16px;
+  }
+
+  .product-visual-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .product-visual-logo-row {
+    gap: 12px;
   }
 
   .product-step {
@@ -472,50 +467,39 @@
     gap: 14px;
   }
 
+  .promise-shell {
+    padding: 12px 0 22px;
+  }
+
+  .promise-intro h2 {
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+
+  .promise-step h3 {
+    font-size: clamp(1.28rem, 5.4vw, 1.56rem);
+  }
+
   .promise-stage {
-    min-height: 352px;
+    min-height: 388px;
+    border-radius: 26px;
   }
 
-  .promise-photo-main {
-    width: min(54%, 176px);
+  .product-stage-frame {
+    min-height: 540px;
   }
 
-  .promise-photo-secondary {
-    width: min(34%, 112px);
+  .product-display {
+    inset: 72px 16px 16px;
+    padding: 20px;
   }
 
-  .promise-route-line {
-    left: 90px;
-    right: 80px;
-    top: 170px;
+  .product-display-visual {
+    min-height: 148px;
   }
 
-  .promise-route-dot {
-    left: 100px;
-    top: 163px;
-  }
-
-  .promise-note {
-    padding: 10px 12px;
-    border-radius: 16px;
-  }
-
-  .promise-note span {
-    font-size: 0.7rem;
-  }
-
-  .promise-note strong {
-    font-size: 0.94rem;
-  }
-
-  .promise-note-send {
-    top: 44px;
-    left: 74px;
-  }
-
-  .promise-note-received {
-    right: 12px;
-    bottom: 16px;
+  .product-visual-card,
+  .product-visual-fx-row {
+    padding: 14px 16px;
   }
 
   .footer-columns {

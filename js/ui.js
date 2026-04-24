@@ -183,6 +183,76 @@
     requestCardUpdate();
   }
 
+  function initPromiseImageSwap() {
+    const promiseSection = document.querySelector("[data-promise-section]");
+    const promiseVisual = document.querySelector("[data-promise-visual]");
+    const promiseSteps = Array.from(document.querySelectorAll("[data-promise-step]"));
+
+    if (!promiseSection || !promiseVisual || !promiseSteps.length) {
+      return;
+    }
+
+    const setActivePromiseStep = (activeIndex) => {
+      promiseSteps.forEach((step, index) => {
+        step.classList.toggle("is-active", index === activeIndex);
+        step.classList.toggle("is-past", index < activeIndex);
+      });
+    };
+
+    // The text panels drive the visual state. As each step becomes the dominant
+    // item in the viewport, it becomes active. The image crossfade starts a bit
+    // later so the second frame arrives after the second step has properly settled.
+    const stepRatios = new Map();
+    const receiverStep = promiseSteps[1] || null;
+
+    const stepObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible-step");
+          }
+
+          stepRatios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0);
+        });
+
+        let activeIndex = 0;
+        let bestRatio = -1;
+
+        promiseSteps.forEach((step, index) => {
+          const ratio = stepRatios.get(step) || 0;
+
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            activeIndex = index;
+          }
+        });
+
+        setActivePromiseStep(bestRatio > 0 ? activeIndex : 0);
+
+        if (receiverStep) {
+          const receiverRatio = stepRatios.get(receiverStep) || 0;
+          const imageProgress = Math.min(Math.max((receiverRatio - 0.24) / 0.28, 0), 1);
+
+          promiseVisual.style.setProperty("--promise-image-progress", imageProgress.toFixed(3));
+        } else {
+          promiseVisual.style.setProperty("--promise-image-progress", "0");
+        }
+      },
+      {
+        threshold: [0, 0.18, 0.32, 0.5, 0.68, 0.86],
+        rootMargin: "-18% 0px -28% 0px",
+      }
+    );
+
+    promiseSteps.forEach((step) => {
+      stepRatios.set(step, 0);
+      stepObserver.observe(step);
+    });
+
+    promiseVisual.style.setProperty("--promise-image-progress", "0");
+    setActivePromiseStep(0);
+  }
+
   function initRevealEffects() {
     const revealItems = document.querySelectorAll(".reveal");
     const statCounters = document.querySelectorAll("[data-counter]");
@@ -245,6 +315,7 @@
     initHeroParallax();
     initProducts();
     initScrollCards();
+    initPromiseImageSwap();
     initRevealEffects();
   };
 })(window);
