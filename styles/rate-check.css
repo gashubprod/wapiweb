@@ -1,0 +1,113 @@
+.rate-check-band {
+  width: min(calc(100% - 32px), 1120px);
+  margin: 0 auto;
+  padding-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.rate-check-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.24fr);
+  gap: 32px;
+  align-items: center;
+  padding: 28px 0;
+  border: 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.rate-check-copy h2 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.rate-check-copy p:last-child {
+  max-width: 34rem;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.rate-check-form {
+  display: grid;
+  grid-template-columns: minmax(104px, 0.7fr) minmax(112px, 0.62fr) minmax(180px, 1.18fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.rate-field {
+  display: grid;
+  gap: 10px;
+}
+
+.rate-field span {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rate-field input,
+.rate-field select {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 16px;
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--text);
+  font: inherit;
+}
+
+.rate-field input:focus,
+.rate-field select:focus {
+  outline: 2px solid rgba(17, 17, 17, 0.08);
+  outline-offset: 0;
+  border-color: rgba(17, 17, 17, 0.18);
+}
+
+.rate-check-result {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 8px;
+  min-height: 56px;
+  padding: 14px 18px;
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.rate-check-result span,
+.rate-check-result small {
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.rate-check-result span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.48);
+}
+
+.rate-check-result strong {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.rate-check-result small {
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+

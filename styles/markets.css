@@ -1,0 +1,282 @@
+.rail-coverage-shell {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 44px 0 18px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  overflow: visible;
+}
+
+.rail-coverage-list {
+  display: grid;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.rail-market-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.36fr) minmax(0, 0.64fr);
+  gap: 26px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.market-heading,
+.platform-market-line {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.market-heading strong,
+.platform-market-line strong {
+  display: block;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.market-heading small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.market-flag {
+  position: relative;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 26px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  overflow: hidden;
+}
+
+.flag-kenya {
+  background:
+    linear-gradient(
+      180deg,
+      #111111 0 28%,
+      #ffffff 28% 34%,
+      #bb1e10 34% 66%,
+      #ffffff 66% 72%,
+      #138808 72% 100%
+    );
+}
+
+.flag-kenya::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 18px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background: #bb1e10;
+  transform: translate(-50%, -50%);
+}
+
+.flag-uganda {
+  background:
+    linear-gradient(
+      180deg,
+      #111111 0 16.6%,
+      #fcdc04 16.6% 33.2%,
+      #d90000 33.2% 49.8%,
+      #111111 49.8% 66.4%,
+      #fcdc04 66.4% 83%,
+      #d90000 83% 100%
+    );
+}
+
+.flag-tanzania {
+  background:
+    linear-gradient(145deg, #1eb53a 0 39%, #fcd116 39% 44%, #111111 44% 56%, #fcd116 56% 61%, #00a3dd 61% 100%);
+}
+
+.flag-china {
+  background: #de2910;
+}
+
+.flag-china::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffde00;
+  box-shadow: 8px 4px 0 -2px #ffde00, 13px 9px 0 -2px #ffde00;
+}
+
+.flag-nigeria {
+  background: linear-gradient(90deg, #008751 0 33.33%, #ffffff 33.33% 66.66%, #008751 66.66% 100%);
+}
+
+.flag-india {
+  background: linear-gradient(180deg, #ff9933 0 33.33%, #ffffff 33.33% 66.66%, #138808 66.66% 100%);
+}
+
+.flag-india::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #000080;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flag-uk {
+  background:
+    linear-gradient(90deg, transparent 42%, #ffffff 42% 58%, transparent 58%),
+    linear-gradient(180deg, transparent 38%, #ffffff 38% 62%, transparent 62%),
+    linear-gradient(90deg, transparent 46%, #c8102e 46% 54%, transparent 54%),
+    linear-gradient(180deg, transparent 44%, #c8102e 44% 56%, transparent 56%),
+    #012169;
+}
+
+.flag-us {
+  background:
+    linear-gradient(90deg, #3c3b6e 0 42%, transparent 42%),
+    repeating-linear-gradient(180deg, #b22234 0 7.7%, #ffffff 7.7% 15.4%);
+}
+
+.rail-logo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  min-width: 0;
+}
+
+.rail-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.rail-logo::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.22;
+}
+
+.rail-logo-image {
+  justify-content: center;
+  min-height: 42px;
+  padding: 0;
+}
+
+.rail-logo-image::before {
+  content: none;
+}
+
+.rail-logo-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 116px;
+  max-height: 30px;
+  object-fit: contain;
+}
+
+.rail-logo-image-airtel img {
+  max-width: 62px;
+  max-height: 44px;
+}
+
+.rail-logo-image-mpesa img,
+.rail-logo-image-wapipay img,
+.rail-logo-image-alipay img,
+.rail-logo-image-upi img {
+  max-width: 124px;
+}
+
+.rail-logo-image-mtn img,
+.rail-logo-image-wechat img {
+  max-height: 34px;
+}
+
+.rail-logo-image-pesalink img,
+.rail-logo-image-tigo img,
+.rail-logo-image-vodacom img,
+.rail-logo-image-halotel img {
+  max-height: 32px;
+}
+
+.rail-logo-bank {
+  color: rgba(17, 17, 17, 0.58);
+}
+
+.rail-logo-bank::before {
+  width: 18px;
+  height: 14px;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, transparent 0 18%, currentColor 18% 28%, transparent 28% 42%, currentColor 42% 52%, transparent 52% 66%, currentColor 66% 76%, transparent 76%),
+    linear-gradient(180deg, currentColor 0 22%, transparent 22% 72%, currentColor 72% 100%);
+  opacity: 0.48;
+}
+
+.platform-list .rail-logo-strip {
+  margin-top: 12px;
+}
+
+.rail-logo-strip-small {
+  gap: 8px 14px;
+}
+
+.rail-logo-strip-small .rail-logo {
+  min-height: 24px;
+  font-size: 0.72rem;
+}
+
+.rail-logo-strip-small .rail-logo-image {
+  min-height: 28px;
+}
+
+.rail-logo-strip-small .rail-logo-image img {
+  max-width: 74px;
+  max-height: 22px;
+}
+
+.rail-logo-strip-small .rail-logo-image-airtel img {
+  max-width: 42px;
+  max-height: 30px;
+}
+
+.rail-logo-strip-small .rail-logo-image-mtn img,
+.rail-logo-strip-small .rail-logo-image-wechat img {
+  max-height: 26px;
+}
+
+.rail-logo-strip-small .rail-logo::before {
+  transform: scale(0.82);
+  transform-origin: center;
+}
+

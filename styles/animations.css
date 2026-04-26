@@ -1,0 +1,130 @@
+@keyframes product-surface-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-globe-spin {
+  from {
+    background-position: center, center;
+    transform: rotate(0deg);
+  }
+
+  to {
+    background-position: center, center;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--arc-rotate, 0deg));
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(var(--arc-rotate, 0deg));
+  }
+}
+
+@keyframes route-progress {
+  0% {
+    left: 8px;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  54% {
+    left: calc(50% - 9px);
+    opacity: 1;
+  }
+
+  88%,
+  100% {
+    left: calc(100% - 26px);
+    opacity: 1;
+  }
+}
+
+@keyframes route-scan {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+
+  14%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(260%);
+    opacity: 0;
+  }
+}
+
+@keyframes site-world-spin {
+  from {
+    transform: translateX(-50%) rotate(0deg) scale(1.02);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg) scale(1.02);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(0, 181, 73, 0.32);
+  }
+
+  50% {
+    transform: scale(1.25);
+    box-shadow: 0 0 26px rgba(0, 181, 73, 0.52);
+  }
+}
+
+@keyframes promise-transfer {
+  0% {
+    transform: translate(0, 0) scale(0.9);
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  54% {
+    transform: translate(104px, -16px) scale(1);
+    opacity: 1;
+  }
+
+  88%,
+  100% {
+    transform: translate(208px, -28px) scale(0.96);
+    opacity: 1;
+  }
+}
+
+@keyframes promise-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+

@@ -62,10 +62,15 @@
     {
       id: "nairobi-dar-es-salaam",
       title: "Nairobi to Dar es Salaam",
+      rateCheckLabel: "Kenya to Tanzania",
       rate: "1 USD = 2589.00 TZS",
       heroRate: "1 KES = 20.16 TZS",
       multiplier: 2589,
       outputCurrency: "TZS",
+      rates: {
+        USD: { rate: "1 USD = 2,589.00 TZS", multiplier: 2589 },
+        KES: { rate: "1 KES = 20.16 TZS", multiplier: 20.16 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "darEsSalaam",
@@ -76,10 +81,15 @@
     {
       id: "nairobi-kampala",
       title: "Nairobi to Kampala",
+      rateCheckLabel: "Kenya to Uganda",
       rate: "1 USD = 3740.00 UGX",
       heroRate: "1 KES = 29.13 UGX",
       multiplier: 3740,
       outputCurrency: "UGX",
+      rates: {
+        USD: { rate: "1 USD = 3,740.00 UGX", multiplier: 3740 },
+        KES: { rate: "1 KES = 29.13 UGX", multiplier: 29.13 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "kampala",
@@ -90,10 +100,15 @@
     {
       id: "nairobi-mumbai",
       title: "Nairobi to Mumbai",
+      rateCheckLabel: "Kenya to India",
       rate: "1 USD = 83.10 INR",
       heroRate: "1 INR = 1.54 KES",
       multiplier: 83.1,
       outputCurrency: "INR",
+      rates: {
+        USD: { rate: "1 USD = 83.10 INR", multiplier: 83.1 },
+        KES: { rate: "1 KES = 0.65 INR", multiplier: 0.65 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "mumbai",
@@ -104,10 +119,15 @@
     {
       id: "nairobi-london",
       title: "Nairobi to London",
+      rateCheckLabel: "Kenya to United Kingdom",
       rate: "1 USD = 0.79 GBP",
       heroRate: "1 GBP = 161.29 KES",
       multiplier: 0.79,
       outputCurrency: "GBP",
+      rates: {
+        USD: { rate: "1 USD = 0.79 GBP", multiplier: 0.79 },
+        KES: { rate: "1 KES = 0.0062 GBP", multiplier: 0.0062 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "london",
@@ -118,10 +138,15 @@
     {
       id: "nairobi-new-york",
       title: "Nairobi to New York",
+      rateCheckLabel: "Kenya to United States",
       rate: "1 USD = 1.00 USD",
       heroRate: "1 USD = 128.40 KES",
       multiplier: 1,
       outputCurrency: "USD",
+      rates: {
+        USD: { rate: "1 USD = 1.00 USD", multiplier: 1 },
+        KES: { rate: "1 KES = 0.0078 USD", multiplier: 0.0078 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "newYork",
@@ -132,10 +157,15 @@
     {
       id: "nairobi-guangzhou",
       title: "Nairobi to Guangzhou",
+      rateCheckLabel: "Kenya to China",
       rate: "1 USD = 7.24 CNY",
       heroRate: "1 CNY = 17.86 KES",
       multiplier: 7.24,
       outputCurrency: "CNY",
+      rates: {
+        USD: { rate: "1 USD = 7.24 CNY", multiplier: 7.24 },
+        KES: { rate: "1 KES = 0.056 CNY", multiplier: 0.056 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "guangzhou",
@@ -146,10 +176,15 @@
     {
       id: "nairobi-lagos",
       title: "Nairobi to Lagos",
+      rateCheckLabel: "Kenya to Nigeria",
       rate: "1 USD = 1548.20 NGN",
       heroRate: "1 KES = 12.06 NGN",
       multiplier: 1548.2,
       outputCurrency: "NGN",
+      rates: {
+        USD: { rate: "1 USD = 1,548.20 NGN", multiplier: 1548.2 },
+        KES: { rate: "1 KES = 12.06 NGN", multiplier: 12.06 },
+      },
       color: "#00b549",
       from: "nairobi",
       to: "lagos",
@@ -160,10 +195,22 @@
   ];
 
   const DEFAULT_ROUTE_ID = "nairobi-mumbai";
+  const DEFAULT_BASE_CURRENCY = "USD";
+  const BASE_CURRENCY_OPTIONS = [
+    { code: "USD", label: "USD" },
+    { code: "KES", label: "KES" },
+  ];
+
   const sharedRouteRates = new Map(
-    ROUTE_DEFINITIONS.map(({ id, rate, multiplier, outputCurrency }) => [
+    ROUTE_DEFINITIONS.map(({ id, rate, multiplier, outputCurrency, rateCheckLabel, rates }) => [
       id,
-      { rate, multiplier, outputCurrency },
+      {
+        label: rateCheckLabel,
+        outputCurrency,
+        rates: rates || {
+          USD: { rate, multiplier },
+        },
+      },
     ])
   );
 
@@ -175,6 +222,8 @@
 
   global.WapiRoutes = {
     DEFAULT_ROUTE_ID,
+    DEFAULT_BASE_CURRENCY,
+    BASE_CURRENCY_OPTIONS,
     MARKET_DEFINITIONS,
     ROUTE_DEFINITIONS,
     sharedRouteRates,

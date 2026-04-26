@@ -1,0 +1,181 @@
+.platform-band-shell {
+  position: relative;
+  padding: 20px 0 14px;
+  border: 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.platform-band-shell::before {
+  content: none;
+}
+
+.platform-intro {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.platform-intro h2,
+.platform-intro p,
+.platform-label,
+.platform-list strong,
+.platform-list span {
+  color: var(--text);
+}
+
+.platform-intro p,
+.platform-list span,
+.eyebrow-light {
+  color: var(--muted);
+}
+
+.legal-main {
+  display: grid;
+  gap: 34px;
+  padding: 56px 0 0;
+}
+
+.legal-hero,
+.legal-section {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 0 auto;
+}
+
+.legal-hero {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.legal-hero h1 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2.65rem, 7vw, 5.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.legal-hero p {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.legal-panel {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.legal-panel h2,
+.legal-panel h3 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.28rem, 2.2vw, 1.8rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.legal-panel p,
+.legal-panel li {
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.legal-panel ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-panel li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.legal-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.platform-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.platform-column {
+  position: relative;
+  z-index: 1;
+  padding: 26px 22px 12px;
+  border: 0;
+  border-left: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+  transition: none;
+}
+
+.platform-column:first-child {
+  border-left: 0;
+}
+
+.platform-label {
+  margin-bottom: 12px;
+}
+
+.platform-list strong {
+  display: block;
+  font-size: 1.04rem;
+}
+
+.platform-list span {
+  display: block;
+  margin-top: 8px;
+}
+
+.platform-market-list li {
+  padding-left: 0;
+}
+
+.platform-market-list li::before {
+  content: none;
+}
+
+.platform-list .market-flag {
+  display: inline-block;
+  margin-top: 0;
+}
+
+.platform-list .rail-logo {
+  display: inline-flex;
+  margin-top: 0;
+  color: rgba(17, 17, 17, 0.72);
+}
+

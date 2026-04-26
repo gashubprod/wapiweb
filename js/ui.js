@@ -2,30 +2,55 @@
   function initRateCheck() {
     const rateForm = document.querySelector("[data-rate-form]");
     const rateAmountInput = document.querySelector("[data-rate-amount]");
+    const rateCurrencySelect = document.querySelector("[data-rate-currency]");
     const rateRouteSelect = document.querySelector("[data-rate-route]");
     const rateOutput = document.querySelector("[data-rate-output]");
     const rateMeta = document.querySelector("[data-rate-meta]");
     const {
       DEFAULT_ROUTE_ID,
+      DEFAULT_BASE_CURRENCY,
       sharedRouteRates,
       formatRateAmount,
     } = global.WapiRoutes || {};
 
-    if (!rateForm || !rateAmountInput || !rateRouteSelect || !rateOutput || !rateMeta) return;
+    if (
+      !rateForm ||
+      !rateAmountInput ||
+      !rateCurrencySelect ||
+      !rateRouteSelect ||
+      !rateOutput ||
+      !rateMeta ||
+      !sharedRouteRates ||
+      !formatRateAmount
+    ) return;
+
+    rateRouteSelect.querySelectorAll("option").forEach((option) => {
+      const route = sharedRouteRates.get(option.value);
+      if (route?.label) option.textContent = route.label;
+    });
 
     const syncRateEstimate = (preferredRouteId = null) => {
       const selectedRoute =
         sharedRouteRates.get(preferredRouteId || rateRouteSelect.value) ||
         sharedRouteRates.get(DEFAULT_ROUTE_ID) ||
         sharedRouteRates.values().next().value;
+      const selectedBaseCurrency = rateCurrencySelect.value || DEFAULT_BASE_CURRENCY || "USD";
+      const selectedRate =
+        selectedRoute?.rates?.[selectedBaseCurrency] ||
+        selectedRoute?.rates?.[DEFAULT_BASE_CURRENCY] ||
+        Object.values(selectedRoute?.rates || {})[0];
+
+      if (!selectedRoute || !selectedRate) return;
+
       const amount = Math.max(Number(rateAmountInput.value) || 0, 0);
-      const received = amount * selectedRoute.multiplier;
+      const received = amount * selectedRate.multiplier;
 
       rateOutput.textContent = `${formatRateAmount(received)} ${selectedRoute.outputCurrency}`;
-      rateMeta.textContent = `Indicative rate ${selectedRoute.rate}`;
+      rateMeta.textContent = `Indicative rate ${selectedRate.rate}`;
     };
 
     rateAmountInput.addEventListener("input", () => syncRateEstimate());
+    rateCurrencySelect.addEventListener("change", () => syncRateEstimate());
     rateRouteSelect.addEventListener("change", () => syncRateEstimate());
     syncRateEstimate();
   }
@@ -85,66 +110,74 @@
   }
 
   function initProducts() {
-    const productSteps = document.querySelectorAll(".product-step");
-    const productPanels = document.querySelectorAll("[data-product-panel]");
+    const productSteps = Array.from(document.querySelectorAll(".product-step"));
+    const productPanels = Array.from(document.querySelectorAll("[data-product-panel]"));
 
     if (!productSteps.length || !productPanels.length) return;
 
+    let activeProductId = null;
+    let productFrame = null;
+
     const setActiveProduct = (productId) => {
+      if (!productId || productId === activeProductId) return;
+      activeProductId = productId;
+
       productSteps.forEach((step) => {
         const isActive = step.dataset.product === productId;
         step.classList.toggle("is-active", isActive);
-        step.setAttribute("aria-pressed", String(isActive));
+        if (isActive) {
+          step.setAttribute("aria-current", "true");
+        } else {
+          step.removeAttribute("aria-current");
+        }
       });
 
       productPanels.forEach((panel) => {
-        panel.classList.toggle("is-active", panel.dataset.productPanel === productId);
+        const isActive = panel.dataset.productPanel === productId;
+        panel.classList.toggle("is-active", isActive);
+        panel.setAttribute("aria-hidden", String(!isActive));
       });
     };
 
-    setActiveProduct(productSteps[0].dataset.product);
+    const syncProductToScroll = () => {
+      const focusLine = window.innerHeight * 0.48;
+      let activeStep = productSteps[0];
+      let smallestDistance = Number.POSITIVE_INFINITY;
 
-    productSteps.forEach((step) => {
-      step.addEventListener("click", () => {
-        setActiveProduct(step.dataset.product);
-      });
+      productSteps.forEach((step) => {
+        const rect = step.getBoundingClientRect();
 
-      step.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") return;
-        event.preventDefault();
-        setActiveProduct(step.dataset.product);
-      });
-    });
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const productObserver = new IntersectionObserver(
-        (entries) => {
-          let bestEntry = null;
-
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
-              bestEntry = entry;
-            }
-          });
-
-          if (bestEntry) {
-            setActiveProduct(bestEntry.target.dataset.product);
-          }
-        },
-        {
-          threshold: [0.35, 0.6, 0.85],
-          rootMargin: "-18% 0px -28% 0px",
+        if (rect.top <= focusLine && rect.bottom >= focusLine) {
+          activeStep = step;
+          smallestDistance = 0;
+          return;
         }
-      );
 
-      productSteps.forEach((step) => productObserver.observe(step));
-    }
+        const midpoint = rect.top + rect.height / 2;
+        const distance = Math.abs(midpoint - focusLine);
+
+        if (distance < smallestDistance) {
+          smallestDistance = distance;
+          activeStep = step;
+        }
+      });
+
+      setActiveProduct(activeStep.dataset.product);
+      productFrame = null;
+    };
+
+    const requestProductSync = () => {
+      if (productFrame !== null) return;
+      productFrame = window.requestAnimationFrame(syncProductToScroll);
+    };
+
+    window.addEventListener("scroll", requestProductSync, { passive: true });
+    window.addEventListener("resize", requestProductSync);
+    syncProductToScroll();
   }
 
   function initScrollCards() {
-    const scrollCards = document.querySelectorAll(".rail-orbit-shell, .tension-card, .cta-panel");
+    const scrollCards = document.querySelectorAll(".cta-panel");
 
     if (!scrollCards.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -187,6 +220,8 @@
     const promiseSection = document.querySelector("[data-promise-section]");
     const promiseVisual = document.querySelector("[data-promise-visual]");
     const promiseSteps = Array.from(document.querySelectorAll("[data-promise-step]"));
+    const promiseVisualSteps = Array.from(document.querySelectorAll("[data-promise-visual-step]"));
+    const promiseLineSteps = Array.from(document.querySelectorAll(".promise-flow-line span"));
 
     if (!promiseSection || !promiseVisual || !promiseSteps.length) {
       return;
@@ -197,60 +232,63 @@
         step.classList.toggle("is-active", index === activeIndex);
         step.classList.toggle("is-past", index < activeIndex);
       });
+
+      promiseVisualSteps.forEach((step, index) => {
+        step.classList.toggle("is-active", index === activeIndex);
+        step.classList.toggle("is-past", index < activeIndex);
+      });
+
+      promiseLineSteps.forEach((step, index) => {
+        step.classList.toggle("is-active", index <= activeIndex);
+      });
     };
 
-    // The text panels drive the visual state. As each step becomes the dominant
-    // item in the viewport, it becomes active. The image crossfade starts a bit
-    // later so the second frame arrives after the second step has properly settled.
-    const stepRatios = new Map();
-    const receiverStep = promiseSteps[1] || null;
+    let promiseFrame = null;
 
-    const stepObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible-step");
-          }
+    const syncPromiseToScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const focusLine = viewportHeight * 0.48;
+      let activeIndex = 0;
+      let smallestDistance = Number.POSITIVE_INFINITY;
 
-          stepRatios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0);
-        });
+      promiseSteps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
 
-        let activeIndex = 0;
-        let bestRatio = -1;
-
-        promiseSteps.forEach((step, index) => {
-          const ratio = stepRatios.get(step) || 0;
-
-          if (ratio > bestRatio) {
-            bestRatio = ratio;
-            activeIndex = index;
-          }
-        });
-
-        setActivePromiseStep(bestRatio > 0 ? activeIndex : 0);
-
-        if (receiverStep) {
-          const receiverRatio = stepRatios.get(receiverStep) || 0;
-          const imageProgress = Math.min(Math.max((receiverRatio - 0.24) / 0.28, 0), 1);
-
-          promiseVisual.style.setProperty("--promise-image-progress", imageProgress.toFixed(3));
-        } else {
-          promiseVisual.style.setProperty("--promise-image-progress", "0");
+        if (rect.top < viewportHeight * 0.92) {
+          step.classList.add("is-visible-step");
         }
-      },
-      {
-        threshold: [0, 0.18, 0.32, 0.5, 0.68, 0.86],
-        rootMargin: "-18% 0px -28% 0px",
-      }
-    );
 
-    promiseSteps.forEach((step) => {
-      stepRatios.set(step, 0);
-      stepObserver.observe(step);
-    });
+        if (rect.top <= focusLine && rect.bottom >= focusLine) {
+          activeIndex = index;
+          smallestDistance = 0;
+          return;
+        }
+
+        const midpoint = rect.top + rect.height / 2;
+        const distance = Math.abs(midpoint - focusLine);
+
+        if (distance < smallestDistance) {
+          smallestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      setActivePromiseStep(activeIndex);
+      promiseVisual.style.setProperty("--promise-image-progress", activeIndex > 0 ? "1" : "0");
+      promiseFrame = null;
+    };
+
+    const requestPromiseSync = () => {
+      if (promiseFrame !== null) return;
+      promiseFrame = window.requestAnimationFrame(syncPromiseToScroll);
+    };
+
+    window.addEventListener("scroll", requestPromiseSync, { passive: true });
+    window.addEventListener("resize", requestPromiseSync);
 
     promiseVisual.style.setProperty("--promise-image-progress", "0");
     setActivePromiseStep(0);
+    syncPromiseToScroll();
   }
 
   function initRevealEffects() {

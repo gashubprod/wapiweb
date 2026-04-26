@@ -26,10 +26,9 @@ jobs:
       - name: Prepare Pages artifact
         run: |
           mkdir -p dist
-          cp index.html styles.css script.js dist/
+          cp *.html styles.css script.js dist/
           cp -r assets vendor styles js dist/
-          if [ -f about.html ]; then cp about.html dist/; fi
-          if [ -f 404.html ]; then cp 404.html dist/; fi
+          if [ -f robots.txt ]; then cp robots.txt dist/; fi
           touch dist/.nojekyll
 
       - name: Upload Pages artifact

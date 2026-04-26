@@ -40,6 +40,11 @@
     grid-template-columns: 1fr;
   }
 
+  .tension-card + .tension-card {
+    border-left: 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
   .hero-stage-frame {
     min-height: 520px;
   }
@@ -80,14 +85,22 @@
     border-top: 0;
   }
 
-  .rail-orbit-shell {
-    grid-template-columns: 1fr;
-  }
-
   .rail-copy {
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .rail-coverage-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .rail-coverage-list {
+    width: 100%;
+  }
+
+  .rail-market-row {
+    grid-template-columns: minmax(190px, 0.4fr) minmax(0, 0.6fr);
   }
 
   .rate-check-shell {
@@ -177,36 +190,74 @@
   }
 
   .product-story {
-    gap: 22px;
-  }
-
-  .product-story-steps {
-    padding-bottom: 0;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 38px;
   }
 
   .product-stage-shell {
-    position: static;
+    position: relative;
+    top: auto;
     order: -1;
     height: auto;
+    min-height: 540px;
   }
 
   .product-stage-frame {
-    min-height: 560px;
+    min-height: 540px;
+    overflow: visible;
   }
 
-  .product-step:last-child {
-    min-height: auto;
+  .product-stage-frame::before {
+    top: 58%;
+    width: min(760px, 100%);
+    height: 440px;
+  }
+
+  .product-display {
+    inset: 38px 0 0;
   }
 
   .product-display-visual {
-    min-height: 170px;
+    min-height: 500px;
+    justify-content: center;
   }
 
-  .product-visual-metrics {
-    gap: 10px;
+  .product-display-visual-enterprise,
+  .product-display-visual-otc {
+    justify-content: center;
+  }
+
+  .product-story-steps {
+    padding: 0;
+    gap: 24px;
+  }
+
+  .product-step {
+    min-height: auto;
+    padding: 28px 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  .product-step::after {
+    top: 28px;
+    height: 54px;
+  }
+
+  .product-step-copy {
+    max-width: none;
+  }
+
+  .product-step-copy h3 {
+    font-size: clamp(1.9rem, 6vw, 3rem);
   }
 
   .about-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-grid {
     grid-template-columns: 1fr;
   }
 
@@ -356,62 +407,74 @@
   }
 
 
-  .rail-orbit-stage {
-    min-height: 380px;
+  .product-story {
+    gap: 24px;
   }
 
-  .rail-ring {
-    inset: 18px;
+  .product-stage-shell {
+    min-height: 510px;
   }
 
-  .rail-ring-two {
-    inset: 66px;
+  .product-stage-frame {
+    min-height: 510px;
   }
 
-  .rail-chip {
-    min-width: 90px;
-    min-height: 40px;
-    padding: 0 12px;
+  .product-stage-label {
     font-size: 0.68rem;
   }
 
-  .rail-hub {
-    width: calc(100% - 72px);
-    padding: 22px 18px;
+  .product-step {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 16px;
+    padding: 24px 0;
   }
 
-  .product-story {
-    gap: 22px;
+  .product-step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 0.78rem;
   }
 
-  .product-display {
-    inset: 76px 20px 20px;
-    padding: 24px;
+  .product-step::before {
+    left: 21px;
   }
 
-  .product-display-visual {
-    min-height: 158px;
-    margin-bottom: 16px;
+  .product-step::after {
+    left: 20px;
   }
 
-  .product-visual-app,
-  .product-visual-board,
-  .product-visual-fx,
-  .product-visual-support {
-    padding: 16px;
-  }
-
-  .product-visual-metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .product-visual-logo-row {
+  .product-step-copy {
     gap: 12px;
   }
 
-  .product-step {
-    min-height: auto;
-    padding-top: 14px;
+  .product-step-copy h3 {
+    font-size: clamp(1.85rem, 8vw, 2.85rem);
+  }
+
+  .product-display-visual-retail {
+    grid-template-columns: minmax(230px, 304px);
+  }
+
+  .product-dashboard,
+  .product-payload-checker,
+  .product-quote-panel {
+    padding: 20px;
+  }
+
+  .product-dashboard-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .product-table div {
+    grid-template-columns: 1fr;
+  }
+
+  .product-table em {
+    justify-self: start;
+  }
+
+  .payload-workspace {
+    grid-template-columns: 1fr;
   }
 
   .stats-band {
@@ -484,27 +547,73 @@
     border-radius: 26px;
   }
 
+  .product-stage-shell {
+    min-height: 620px;
+  }
+
   .product-stage-frame {
-    min-height: 540px;
+    min-height: 620px;
   }
 
-  .product-display {
-    inset: 72px 16px 16px;
-    padding: 20px;
+  .product-step {
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: 14px;
   }
 
-  .product-display-visual {
-    min-height: 148px;
+  .product-step-number {
+    width: 42px;
+    height: 42px;
   }
 
-  .product-visual-card,
-  .product-visual-fx-row {
-    padding: 14px 16px;
+  .product-step::before {
+    left: 20px;
+  }
+
+  .product-step::after {
+    left: 19px;
+  }
+
+  .product-display-visual-retail {
+    grid-template-columns: 1fr;
+  }
+
+  .product-device-phone {
+    min-height: auto;
+    border-radius: 28px;
+  }
+
+  .product-dashboard,
+  .product-payload-checker,
+  .product-quote-panel {
+    border-radius: 20px;
+  }
+
+  .payload-endpoint {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .product-progress-line {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer-columns {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .rail-market-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px 0;
+  }
+
+  .rail-logo-strip {
+    gap: 10px 14px;
+  }
+
+  .market-heading {
+    align-items: flex-start;
   }
 }
 
@@ -525,12 +634,8 @@
     transform: none;
   }
 
-  .tension-card,
   .cta-panel,
-  .rail-orbit-shell,
-  .reveal.is-visible .tension-card,
-  .reveal.is-visible .cta-panel,
-  .reveal.is-visible .rail-orbit-shell {
+  .reveal.is-visible .cta-panel {
     opacity: 1;
     transform: none;
     filter: none;

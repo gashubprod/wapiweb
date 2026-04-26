@@ -134,6 +134,8 @@
       let countryFeatures = [];
       let lastOverlayFrameTime = 0;
       let lastDockPosition = null;
+      let liveGlobeReady = false;
+      let sceneActive = !("IntersectionObserver" in window);
       const cityTags = new Map();
       const cityTagPositions = new Map();
       const overlayThrottleMs = 1000 / 30;
@@ -194,7 +196,7 @@
       if (controls) {
         controls.enableZoom = false;
         controls.enablePan = false;
-        controls.autoRotate = !prefersReducedMotion;
+        controls.autoRotate = false;
         controls.autoRotateSpeed = 0.56;
       }
 
@@ -206,7 +208,7 @@
       };
 
       const startCycle = () => {
-        if (prefersReducedMotion || cycleInterval) return;
+        if (prefersReducedMotion || !sceneActive || !liveGlobeReady || cycleInterval) return;
 
         cycleInterval = window.setInterval(() => {
           const currentIndex = routes.findIndex((route) => route.id === activeRouteId);
@@ -218,11 +220,44 @@
       const pauseCycle = () => {
         stopCycle();
 
-        if (prefersReducedMotion) return;
+        if (prefersReducedMotion || !sceneActive) return;
 
         cycleResumeTimeout = window.setTimeout(() => {
           startCycle();
         }, 12000);
+      };
+
+      const setGlobeRunning = (isRunning) => {
+        sceneActive = isRunning;
+
+        if (!liveGlobeReady) return;
+
+        if (controls) {
+          controls.autoRotate = isRunning && !prefersReducedMotion;
+        }
+
+        if (isRunning) {
+          if (typeof globe.resumeAnimation === "function") {
+            globe.resumeAnimation();
+          }
+
+          if (!globeFrame) {
+            globeFrame = window.requestAnimationFrame(updateOverlay);
+          }
+
+          startCycle();
+        } else {
+          stopCycle();
+
+          if (typeof globe.pauseAnimation === "function") {
+            globe.pauseAnimation();
+          }
+
+          if (globeFrame) {
+            window.cancelAnimationFrame(globeFrame);
+            globeFrame = null;
+          }
+        }
       };
 
       const syncScene = () => {
@@ -406,6 +441,11 @@
       }
 
       const updateOverlay = (timestamp = 0) => {
+        if (!sceneActive) {
+          globeFrame = null;
+          return;
+        }
+
         if (
           activeRoute &&
           (!lastOverlayFrameTime || timestamp - lastOverlayFrameTime >= overlayThrottleMs)
@@ -437,8 +477,8 @@
           setActiveRoute(activeRouteId, false, false);
           resizeGlobe();
           routeGlobe.classList.add("is-globe-ready");
-          startCycle();
-          globeFrame = window.requestAnimationFrame(updateOverlay);
+          liveGlobeReady = true;
+          setGlobeRunning(sceneActive);
         });
       };
 
@@ -450,6 +490,22 @@
 
       if (desktopGlobeMedia.matches) {
         beginLiveGlobe();
+      }
+
+      if ("IntersectionObserver" in window) {
+        const visibilityTarget = routeGlobe.closest("[data-network]") || routeGlobe;
+        const visibilityObserver = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            setGlobeRunning(Boolean(entry && entry.isIntersecting));
+          },
+          {
+            rootMargin: "160px 0px 160px 0px",
+            threshold: 0.01,
+          }
+        );
+
+        visibilityObserver.observe(visibilityTarget);
       }
 
       if (typeof desktopGlobeMedia.addEventListener === "function") {

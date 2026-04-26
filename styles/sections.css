@@ -1,0 +1,218 @@
+.brand-rail {
+  padding-top: 40px;
+}
+
+.rail-label {
+  margin: 0 0 14px;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rail-copy {
+  max-width: 520px;
+  margin: 0;
+  text-align: left;
+}
+
+.rail-copy h2 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2rem, 3.25vw, 3.1rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.rail-copy p:last-child {
+  max-width: 29rem;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.stats-band,
+.tension-grid,
+.platform-columns {
+  perspective: 1400px;
+}
+
+.cta-panel {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0) scale(0.985);
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  transition:
+    transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 460ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.reveal.is-visible .cta-panel {
+  opacity: var(--card-alpha, 1);
+  transform: translate3d(0, var(--card-rise, 0px), 0) scale(var(--card-scale, 1)) rotateX(var(--card-tilt, 0deg));
+}
+
+.stats-band {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding-top: 22px;
+  border: 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.stat,
+.product-stage-shell,
+.cta-panel {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.stat {
+  padding: 24px 22px;
+  border: 0;
+  border-right: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+}
+
+.stat:last-child {
+  border-right: 0;
+}
+
+.stat strong {
+  display: block;
+  font-family: "Sora", sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: -0.04em;
+}
+
+.stat span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.tension-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 34px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.tension-card {
+  padding: 30px clamp(20px, 3vw, 34px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.tension-card + .tension-card {
+  border-left: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.tension-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tension-label::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
+
+.tension-label-accent {
+  color: var(--brand-deep);
+}
+
+.tension-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tension-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.tension-list li + li {
+  margin-top: 16px;
+}
+
+.tension-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-heading h2,
+.platform-intro h2 {
+  font-size: clamp(2.3rem, 4vw, 4rem);
+}
+
+.section-heading p,
+.platform-intro p {
+  margin: 18px 0 0;
+}
+
+.tension-section {
+  padding-top: 58px;
+}
+
+.tension-section .section-heading {
+  max-width: 700px;
+}
+
+.tension-section .section-heading p {
+  max-width: 36rem;
+  margin: 14px auto 0;
+  color: var(--muted);
+  line-height: 1.66;
+}
+
+.platform-columns {
+  display: grid;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.product-heading {
+  max-width: 840px;
+}
+

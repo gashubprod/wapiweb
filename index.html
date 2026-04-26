@@ -3,11 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WapiPay | Cross-Border Payments Built To Move</title>
+    <title>WapiPay | Cross-Border Payments, Payouts, and Wallets</title>
     <meta
       name="description"
-      content="WapiPay is built on one promise: cross-border money should move with speed, clarity, and control across trusted rails."
+      content="WapiPay helps people and businesses send, collect, and settle cross-border payments across mobile money, bank, wallet, card, and API rails."
     />
+    <meta property="og:title" content="WapiPay | Cross-Border Payments, Payouts, and Wallets" />
+    <meta
+      property="og:description"
+      content="Send, collect, and settle cross-border payments across supported countries with app, API, and OTC execution paths."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/existing/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,32 +34,33 @@
       <main id="top">
         <section class="hero section reveal is-visible">
           <div class="hero-copy">
-            <p class="eyebrow">Where in the world do you pay?</p>
-            <h1><span class="text-reveal">Move money across borders with speed, clarity, and control.</span></h1>
+            <p class="eyebrow">Cross-border payments for people and businesses</p>
+            <h1><span class="text-reveal">Move money across borders, clearly and reliably.</span></h1>
             <div class="hero-support">
               <p class="hero-text">
-                WapiPay keeps cross-border payouts trusted, visible, and instant from sender to receiver.
+                Send personal transfers, run business payouts, connect payment APIs, and manage
+                larger settlements with local payment options in supported countries.
               </p>
               <div class="hero-proof-band" aria-label="Platform proof points">
                 <div class="hero-proof-item">
-                  <strong>20+</strong>
-                  <span>Currencies</span>
+                  <strong>Supported</strong>
+                  <span>Countries</span>
                 </div>
                 <div class="hero-proof-item">
-                  <strong>Instant</strong>
-                  <span>Payout</span>
+                  <strong>App + API</strong>
+                  <span>Access</span>
                 </div>
                 <div class="hero-proof-item">
                   <strong>Local</strong>
-                  <span>Rails</span>
+                  <span>Payouts</span>
                 </div>
               </div>
               <div class="hero-actions">
-                <a class="button button-primary" href="#get-started">Download App</a>
-                <a class="button button-secondary" href="https://docs.wapipay.io/">Developer Portal</a>
+                <a class="button button-primary" href="#get-started">Download the app</a>
+                <a class="button button-secondary" href="https://docs.wapipay.io/">Explore APIs</a>
               </div>
               <p class="hero-platform-note">
-                Available on <span>App Store</span> and <span>Google Play</span>
+                Personal transfers, business payouts, developer integrations, and OTC support.
               </p>
             </div>
           </div>
@@ -59,8 +68,8 @@
           <div class="hero-stage">
             <div class="hero-stage-frame hero-network" data-network>
               <div class="network-topline">
-                <span>Trusted route network</span>
-                <span>Live rate visibility</span>
+                <span>Cross-border routes</span>
+                <span>Live rates</span>
               </div>
 
               <div class="network-globe network-globe-hero" data-depth="0.35" data-route-globe>
@@ -68,7 +77,7 @@
                   <div
                     class="network-globe-render"
                     role="img"
-                    aria-label="Global corridor globe"
+                    aria-label="Global cross-border payment map"
                     data-globe-render
                   ></div>
                   <div class="network-globe-sheen"></div>
@@ -95,34 +104,42 @@
             <div class="rate-check-copy">
               <p class="eyebrow">Rate Check</p>
               <h2 id="rate-check-title">
-                <span class="text-reveal">Know what your money should deliver before it moves.</span>
+                <span class="text-reveal">Check the rate before you send.</span>
               </h2>
-              <p>WapiPay gives you a clear view of indicative pricing before money moves.</p>
+              <p>Choose the amount, send currency, and country route to preview the indicative payout.</p>
             </div>
 
             <form class="rate-check-form" data-rate-form>
               <label class="rate-field">
-                <span>Amount in USD</span>
+                <span>Amount</span>
                 <input type="number" min="1" step="1" value="100" inputmode="decimal" data-rate-amount />
               </label>
 
               <label class="rate-field">
-                <span>Route</span>
+                <span>Send currency</span>
+                <select data-rate-currency>
+                  <option value="USD">USD</option>
+                  <option value="KES">KES</option>
+                </select>
+              </label>
+
+              <label class="rate-field">
+                <span>Country route</span>
                 <select data-rate-route>
-                  <option value="nairobi-dar-es-salaam">Nairobi to Dar es Salaam</option>
-                  <option value="nairobi-kampala">Nairobi to Kampala</option>
-                  <option value="nairobi-mumbai">Nairobi to Mumbai</option>
-                  <option value="nairobi-london">Nairobi to London</option>
-                  <option value="nairobi-new-york">Nairobi to New York</option>
-                  <option value="nairobi-guangzhou">Nairobi to Guangzhou</option>
-                  <option value="nairobi-lagos">Nairobi to Lagos</option>
+                  <option value="nairobi-kampala">Kenya to Uganda</option>
+                  <option value="nairobi-dar-es-salaam">Kenya to Tanzania</option>
+                  <option value="nairobi-lagos">Kenya to Nigeria</option>
+                  <option value="nairobi-london">Kenya to United Kingdom</option>
+                  <option value="nairobi-new-york">Kenya to United States</option>
+                  <option value="nairobi-mumbai">Kenya to India</option>
+                  <option value="nairobi-guangzhou">Kenya to China</option>
                 </select>
               </label>
 
               <div class="rate-check-result" aria-live="polite">
                 <span>You receive</span>
-                <strong data-rate-output>724.00 CNY</strong>
-                <small data-rate-meta>Indicative rate 1 USD = 7.24 CNY</small>
+                <strong data-rate-output>374,000.00 UGX</strong>
+                <small data-rate-meta>Indicative rate 1 USD = 3,740.00 UGX</small>
               </div>
             </form>
           </div>
@@ -134,54 +151,65 @@
           data-promise-section
         >
           <div class="promise-intro">
-            <p class="eyebrow">Promise Kept</p>
+            <p class="eyebrow">Before You Send</p>
             <h2 id="promise-title">
-              <span class="text-reveal">Money moves. People feel it.</span>
+              <span class="text-reveal">See the rate, payout method, and delivery status before confirming.</span>
             </h2>
           </div>
 
           <div class="promise-shell">
             <div class="promise-visual" aria-hidden="true">
               <div class="promise-stage" data-promise-visual>
-                <figure class="promise-stage-media promise-stage-swap">
-                  <img
-                    class="promise-stage-image promise-stage-photo promise-stage-photo-primary"
-                    src="assets/pexels-joshuaworoniecki-4554696.jpg"
-                    alt=""
-                    width="5723"
-                    height="3861"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <img
-                    class="promise-stage-image promise-stage-photo promise-stage-photo-secondary"
-                    src="assets/pexels-gustavo-fring-6699301.jpg"
-                    alt=""
-                    width="5760"
-                    height="3840"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
+                <div class="promise-flow-panel">
+                  <div class="promise-flow-card is-active" data-promise-visual-step>
+                    <span>Rate</span>
+                    <strong>100 USD -> 374,000 UGX</strong>
+                    <small>Amount, send currency, and destination country stay visible</small>
+                  </div>
+                  <div class="promise-flow-card" data-promise-visual-step>
+                    <span>Payout Method</span>
+                    <strong>Bank or mobile money</strong>
+                    <small>Available local rails are shown before confirmation</small>
+                  </div>
+                  <div class="promise-flow-card" data-promise-visual-step>
+                    <span>Delivery</span>
+                    <strong>Status visible</strong>
+                    <small>References and payout progress stay available after sending</small>
+                  </div>
+                  <div class="promise-flow-line">
+                    <span class="is-active"></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="promise-steps" aria-label="Promise story steps">
               <article class="promise-step" data-promise-step data-promise-image="sender">
-                <span class="promise-step-index">Step 1</span>
-                <h3>Send with clarity</h3>
+                <span class="promise-step-index">Check</span>
+                <h3>Preview the rate in the currency you send.</h3>
                 <p>
-                  Start a transfer in seconds, with the amount, corridor, and delivery path
-                  clearly shown before you confirm.
+                  Enter an amount, choose the send currency, and pick the country route before
+                  deciding whether to continue.
                 </p>
               </article>
 
               <article class="promise-step" data-promise-step data-promise-image="receiver">
-                <span class="promise-step-index">Step 2</span>
-                <h3>Received with confidence</h3>
+                <span class="promise-step-index">Choose</span>
+                <h3>See the payout method before confirmation.</h3>
                 <p>
-                  The receiver gets paid out quickly, with the reassurance that the promise was
-                  kept.
+                  Available options like bank transfer, mobile money, WapiPay account payout, or
+                  supported wallets are shown for the selected market.
+                </p>
+              </article>
+
+              <article class="promise-step" data-promise-step data-promise-image="paid">
+                <span class="promise-step-index">Track</span>
+                <h3>Keep the delivery status visible.</h3>
+                <p>
+                  Payout status, references, and delivery information remain visible so teams and
+                  customers can reconcile the movement.
                 </p>
               </article>
             </div>
@@ -189,64 +217,165 @@
         </section>
 
         <section class="brand-rail reveal" aria-label="Supported rails">
-          <div class="rail-orbit-shell">
+          <div class="rail-coverage-shell">
             <div class="rail-copy">
-              <p class="rail-label">Rail Layer</p>
-              <h2><span class="text-reveal">One infrastructure layer across mobile money, banks, cards, and wallets.</span></h2>
+              <p class="rail-label">Supported Rails</p>
+              <h2><span class="text-reveal">Local payout methods, organized by market.</span></h2>
               <p>
-                WapiPay connects local payment methods and payout routes into one execution layer
-                built for local delivery.
+                Customers should see the local rails before they commit. Coverage is shown by
+                market, payment method, and settlement path.
               </p>
             </div>
 
-            <div class="rail-orbit-stage" aria-hidden="true">
-              <div class="rail-ring rail-ring-one">
-                <span class="rail-chip rail-chip-image rail-chip-image-mpesa">
-                  <img
-                    src="assets/existing/logos/mpesa-icon.png"
-                    alt="M-Pesa"
-                    width="300"
-                    height="168"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </span>
-                <span class="rail-chip rail-chip-image rail-chip-image-airtel">
-                  <img
-                    src="assets/existing/logos/airtel-money.png"
-                    alt="Airtel Money"
-                    width="194"
-                    height="260"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </span>
-                <span class="rail-chip rail-chip-image rail-chip-image-alipay">
-                  <img src="assets/existing/logos/alipay.png" alt="" loading="lazy" decoding="async" />
-                </span>
-                <span class="rail-chip rail-chip-word rail-chip-word-bank">Bank transfer</span>
-              </div>
+            <div class="rail-coverage-list" aria-label="Supported markets and rails">
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-kenya" aria-hidden="true"></span>
+                  <div>
+                    <strong>Kenya</strong>
+                    <small>Mobile money, instant bank, and wallet routes</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="Kenya payment rails">
+                  <span class="rail-logo rail-logo-image rail-logo-image-mpesa">
+                    <img src="assets/M-PESA_LOGO-01.svg.png" alt="M-PESA" width="960" height="512" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                    <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-pesalink">
+                    <img src="assets/pesalink%20logo.png" alt="PesaLink" width="235" height="214" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                    <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                  </span>
+                </div>
+              </article>
 
-              <div class="rail-ring rail-ring-two">
-                <span class="rail-chip rail-chip-image rail-chip-image-wechat">
-                  <img src="assets/existing/logos/wechatpay.png" alt="" loading="lazy" decoding="async" />
-                </span>
-                <span class="rail-chip rail-chip-image rail-chip-image-visa">
-                  <img src="assets/existing/logos/visa.png" alt="" loading="lazy" decoding="async" />
-                </span>
-                <span class="rail-chip rail-chip-image rail-chip-image-mastercard">
-                  <img src="assets/existing/logos/mastercard.png" alt="" loading="lazy" decoding="async" />
-                </span>
-                <span class="rail-chip rail-chip-image rail-chip-image-unionpay">
-                  <img src="assets/existing/logos/unionpay.png" alt="" loading="lazy" decoding="async" />
-                </span>
-                <span class="rail-chip rail-chip-word rail-chip-word-wallet">WapiPay Wallet</span>
-              </div>
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-uganda" aria-hidden="true"></span>
+                  <div>
+                    <strong>Uganda</strong>
+                    <small>Mobile money and bank payout coverage</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="Uganda payment rails">
+                  <span class="rail-logo rail-logo-image rail-logo-image-mtn">
+                    <img src="assets/mtn%20logo.png" alt="MTN MoMo" width="225" height="225" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                    <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                    <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                  </span>
+                </div>
+              </article>
 
-              <div class="rail-hub">
-                <span>WapiPay Rail Layer</span>
-                <strong>One payout layer across every major route.</strong>
-              </div>
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-nigeria" aria-hidden="true"></span>
+                  <div>
+                    <strong>Nigeria</strong>
+                    <small>Bank payout and WapiPay account routes</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="Nigeria payment rails">
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                    <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                  </span>
+                </div>
+              </article>
+
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-tanzania" aria-hidden="true"></span>
+                  <div>
+                    <strong>Tanzania</strong>
+                    <small>Mobile wallet and account payout support</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="Tanzania payment rails">
+                  <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                    <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-tigo">
+                    <img src="assets/tigo%20logo.png" alt="Tigo Pesa" width="265" height="190" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-vodacom">
+                    <img src="assets/vodacom%20logo.png" alt="Vodacom" width="284" height="177" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-halotel">
+                    <img src="assets/halotel%20logo.png" alt="Halotel" width="338" height="149" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                </div>
+              </article>
+
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-china" aria-hidden="true"></span>
+                  <div>
+                    <strong>China</strong>
+                    <small>Wallet and bank payout options</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="China payment rails">
+                  <span class="rail-logo rail-logo-image rail-logo-image-alipay">
+                    <img src="assets/alipay%20logo.png" alt="Alipay" width="447" height="113" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-image rail-logo-image-wechat">
+                    <img src="assets/weechat%20logo.jfif" alt="WeChat Pay" width="225" height="225" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                </div>
+              </article>
+
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-india" aria-hidden="true"></span>
+                  <div>
+                    <strong>India</strong>
+                    <small>Local account and UPI payout options</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="India payment rails">
+                  <span class="rail-logo rail-logo-image rail-logo-image-upi">
+                    <img src="assets/india%20upi%20logo.png" alt="UPI" width="377" height="134" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                </div>
+              </article>
+
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-uk" aria-hidden="true"></span>
+                  <div>
+                    <strong>United Kingdom</strong>
+                    <small>Bank transfer payout support</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="United Kingdom payment rails">
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                </div>
+              </article>
+
+              <article class="rail-market-row">
+                <div class="market-heading">
+                  <span class="market-flag flag-us" aria-hidden="true"></span>
+                  <div>
+                    <strong>United States</strong>
+                    <small>Bank transfer payout support</small>
+                  </div>
+                </div>
+                <div class="rail-logo-strip" aria-label="United States payment rails">
+                  <span class="rail-logo rail-logo-bank">Bank transfer</span>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -297,56 +426,71 @@
         </section>
 
         <section class="section reveal">
-          <div class="section-heading" id="products">
+          <div class="section-heading product-heading" id="products">
             <p class="eyebrow">Products</p>
-            <h2><span class="text-reveal">Three products. One WapiPay platform.</span></h2>
-            <p>Choose the path that matches how you move money: app, API, or assisted execution.</p>
+            <h2><span class="text-reveal">One platform for every way money moves.</span></h2>
+            <p>Choose the surface that matches the job: personal transfers, business operations, or larger treasury movement.</p>
           </div>
 
-          <div class="product-story">
-            <div class="product-story-steps" aria-label="Product flow">
+          <div class="product-story" data-product-story>
+            <div class="product-story-steps" aria-label="Product scroll story">
               <article
                 class="product-step is-active"
                 data-product="retail"
-                tabindex="0"
-                role="button"
-                aria-pressed="true"
               >
                 <span class="product-step-number">01</span>
+                <span class="product-step-kicker">Personal</span>
                 <div class="product-step-copy">
-                  <span class="product-step-kicker">Retail</span>
-                  <h3>For people moving money day to day.</h3>
-                  <p>Wallet, IBAN, card, and fast transfers for individuals, freelancers, and traders.</p>
+                  <h3>Send, hold, and spend from one wallet.</h3>
+                  <p>
+                    A personal account for everyday transfers, wallet balance, account details,
+                    and virtual card access without making the customer inspect a dashboard.
+                  </p>
+                  <ul class="product-display-list">
+                    <li>Transfer to mobile money, bank accounts, and WapiPay users</li>
+                    <li>Preview the rate and payout route before confirming</li>
+                  </ul>
+                  <a class="product-step-link" href="#get-started">Get the app</a>
                 </div>
               </article>
 
               <article
                 class="product-step"
                 data-product="enterprise"
-                tabindex="0"
-                role="button"
-                aria-pressed="false"
               >
                 <span class="product-step-number">02</span>
+                <span class="product-step-kicker">Business</span>
                 <div class="product-step-copy">
-                  <span class="product-step-kicker">Enterprise</span>
-                  <h3>For teams running collections and payouts.</h3>
-                  <p>Business accounts, approvals, APIs, and reconciliation for operational payment flows.</p>
+                  <h3>Collect, approve, and pay out at operating speed.</h3>
+                  <p>
+                    Business users see enough to act: what came in, what needs approval, and
+                    which payout events have completed.
+                  </p>
+                  <ul class="product-display-list">
+                    <li>Batch payouts, approval queues, reconciliation, and webhook events</li>
+                    <li>Local collection and payout rails across supported markets</li>
+                  </ul>
+                  <a class="product-step-link" href="https://docs.wapipay.io/">Open developer portal</a>
                 </div>
               </article>
 
               <article
                 class="product-step"
                 data-product="otc"
-                tabindex="0"
-                role="button"
-                aria-pressed="false"
               >
                 <span class="product-step-number">03</span>
+                <span class="product-step-kicker">Treasury</span>
                 <div class="product-step-copy">
-                  <span class="product-step-kicker">OTC Desk</span>
-                  <h3>For larger-value FX and treasury needs.</h3>
-                  <p>Assisted execution for bigger conversions, supplier settlement, and custom payout timing.</p>
+                  <h3>Move larger value with a clearer desk process.</h3>
+                  <p>
+                    The OTC path turns quote, review, booking, and settlement into a visible
+                    flow without surrounding it with unnecessary interface chrome.
+                  </p>
+                  <ul class="product-display-list">
+                    <li>Indicative quote, beneficiary review, and desk follow-up</li>
+                    <li>Support for supplier settlement and larger FX execution</li>
+                  </ul>
+                  <a class="product-step-link" href="https://docs.wapipay.io/docs/contact-us">Talk to OTC desk</a>
                 </div>
               </article>
             </div>
@@ -354,121 +498,116 @@
             <div class="product-stage-shell">
               <div class="product-stage-frame">
                 <div class="product-stage-chrome">
-                  <span class="product-stage-label">Best fit</span>
+                  <span class="product-stage-label">Scroll The Products</span>
                 </div>
 
                 <article class="product-display is-active" data-product-panel="retail">
                   <div class="product-display-visual product-display-visual-retail" aria-hidden="true">
-                    <div class="product-visual-app">
-                      <div class="product-visual-topline">
-                        <span>WapiPay Wallet</span>
-                        <strong>KES 28,400</strong>
-                      </div>
-                      <div class="product-visual-card">
-                        <span>Virtual card</span>
-                        <img src="assets/existing/logos/visa.png" alt="" loading="lazy" decoding="async" />
-                      </div>
-                      <div class="product-visual-actions">
-                        <span>Send</span>
-                        <span>Receive</span>
-                        <span>Spend</span>
-                      </div>
+                    <div class="product-device product-device-phone">
+                      <img
+                        src="assets/v4_homepage.PNG"
+                        alt=""
+                        width="304"
+                        height="644"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
-                    <div class="product-visual-support">
-                      <span>Global IBAN</span>
-                      <strong>Ready for everyday movement</strong>
-                    </div>
-                  </div>
-                  <span class="card-kicker">WapiPay Retail</span>
-                  <h3>For people who want one app for sending, receiving, and spending.</h3>
-                  <p>
-                    Use WapiPay as your everyday money account for transfers, cards, bills, and global access.
-                  </p>
-                  <ul class="product-display-list">
-                    <li>Wallet, global IBAN, and virtual card tools in one app</li>
-                    <li>Transfers to bank, mobile money, and other WapiPay users</li>
-                  </ul>
-                  <div class="product-display-actions">
-                    <a class="button button-secondary" href="#get-started">Get the app</a>
                   </div>
                 </article>
 
                 <article class="product-display" data-product-panel="enterprise">
                   <div class="product-display-visual product-display-visual-enterprise" aria-hidden="true">
-                    <div class="product-visual-board">
-                      <div class="product-visual-metrics">
+                    <div class="product-payload-checker">
+                      <div class="payload-toolbar">
                         <div>
-                          <span>Collections</span>
-                          <strong>126</strong>
+                          <span>Payload check</span>
+                          <strong>Create payout</strong>
                         </div>
-                        <div>
-                          <span>Payouts</span>
-                          <strong>48</strong>
-                        </div>
-                        <div>
-                          <span>Approvals</span>
-                          <strong>12</strong>
-                        </div>
+                        <span class="payload-env">Sandbox</span>
                       </div>
-                      <div class="product-visual-flow">
-                        <span>API</span>
-                        <span>Approvals</span>
-                        <span>Webhooks</span>
+
+                      <div class="payload-endpoint">
+                        <span>POST</span>
+                        <code>/v1/payouts</code>
                       </div>
-                      <div class="product-visual-logo-row">
-                        <img src="assets/existing/logos/alipay.png" alt="" loading="lazy" decoding="async" />
-                        <img src="assets/existing/logos/wechatpay.png" alt="" loading="lazy" decoding="async" />
-                        <img src="assets/existing/logos/unionpay.png" alt="" loading="lazy" decoding="async" />
+
+                      <div class="payload-workspace">
+                        <div class="payload-editor">
+                          <div class="payload-editor-topline">
+                            <span>Request body</span>
+                            <strong>JSON</strong>
+                          </div>
+                          <pre><code>{
+  "amount": 8240,
+  "currency": "USD",
+  "route": "KE_BANK",
+  "beneficiary": "supplier_1029",
+  "reference": "INV-88421"
+}</code></pre>
+                        </div>
+
+                        <div class="payload-result">
+                          <div class="payload-result-head">
+                            <span>Validation</span>
+                            <strong>Ready to send</strong>
+                          </div>
+
+                          <ul class="payload-check-list">
+                            <li>Amount within country limit</li>
+                            <li>Beneficiary verified</li>
+                            <li>Webhook endpoint active</li>
+                          </ul>
+
+                          <div class="payload-response">
+                            <span>Response</span>
+                            <code>201 payout.created</code>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <span class="card-kicker">WapiPay Enterprise</span>
-                  <h3>For teams that need collections, disbursements, and integration-ready payments.</h3>
-                  <p>
-                    Run payment operations on one business layer built for approvals, reconciliation, and developer access.
-                  </p>
-                  <ul class="product-display-list">
-                    <li>Collections and payout flows with approvals and reconciliation</li>
-                    <li>Developer portal, APIs, webhooks, and agent tooling</li>
-                  </ul>
-                  <div class="product-display-actions" id="developers">
-                    <a class="button button-secondary" href="https://docs.wapipay.io/">Open developer portal</a>
                   </div>
                 </article>
 
                 <article class="product-display" data-product-panel="otc">
                   <div class="product-display-visual product-display-visual-otc" aria-hidden="true">
-                    <div class="product-visual-fx">
-                      <div class="product-visual-fx-row">
+                    <div class="product-quote-panel">
+                      <div class="product-dashboard-header">
+                        <div>
+                          <span>OTC request</span>
+                          <strong>Supplier settlement</strong>
+                        </div>
+                        <span class="product-status-pill">Reviewing</span>
+                      </div>
+
+                      <div class="product-quote-rate">
                         <span>USD / KES</span>
                         <strong>129.42</strong>
+                        <small>Indicative until booked</small>
                       </div>
-                      <div class="product-visual-fx-row">
-                        <span>GBP / KES</span>
-                        <strong>161.08</strong>
+
+                      <div class="product-table product-table-compact">
+                        <div>
+                          <span>Amount</span>
+                          <strong>USD 42,000</strong>
+                        </div>
+                        <div>
+                          <span>Settlement</span>
+                          <strong>Nairobi to London</strong>
+                        </div>
+                        <div>
+                          <span>Timing</span>
+                          <strong>Same-day review</strong>
+                        </div>
                       </div>
-                      <div class="product-visual-corridors">
-                        <span>Nairobi</span>
-                        <span>London</span>
-                        <span>Mumbai</span>
+
+                      <div class="product-progress-line">
+                        <span class="is-complete">Request</span>
+                        <span class="is-active">Quote</span>
+                        <span>Book</span>
+                        <span>Settle</span>
                       </div>
                     </div>
-                    <div class="product-visual-support product-visual-support-strong">
-                      <span>Settlement handling</span>
-                      <strong>Desk-led execution on larger routes</strong>
-                    </div>
-                  </div>
-                  <span class="card-kicker">WapiPay OTC Desk</span>
-                  <h3>For treasury, supplier settlement, and larger-value FX execution.</h3>
-                  <p>
-                    Work with the OTC desk when transaction size, timing, or route complexity needs a more hands-on path.
-                  </p>
-                  <ul class="product-display-list">
-                    <li>Execution across supported fiat pairs and payout corridors</li>
-                    <li>Dedicated support for custom treasury and settlement handling</li>
-                  </ul>
-                  <div class="product-display-actions">
-                    <a class="button button-secondary" href="https://docs.wapipay.io/docs/contact-us">Talk to OTC desk</a>
                   </div>
                 </article>
 
@@ -480,46 +619,131 @@
         <section class="section platform-band reveal">
           <div class="platform-band-shell">
             <div class="platform-intro" id="markets">
-              <p class="eyebrow eyebrow-light">Connected Rails</p>
-              <h2><span class="text-reveal text-reveal-light">Built to keep the promise all the way through.</span></h2>
-              <p>WapiPay connects local payment methods, payout rails, and settlement in one movement layer.</p>
+              <p class="eyebrow eyebrow-light">Trust Controls</p>
+              <h2><span class="text-reveal text-reveal-light">Payment products need operational controls.</span></h2>
+              <p>WapiPay presents verification, screening, secure access, and audit visibility as part of the product experience.</p>
             </div>
 
             <div class="platform-columns">
               <article class="platform-column">
                 <span class="platform-label">Markets</span>
-                <ul class="platform-list">
+                <ul class="platform-list platform-market-list">
                   <li>
-                    <strong>Kenya</strong>
-                    <span>M-Pesa, Airtel Money, T-Kash, PesaLink, bank transfer</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-kenya" aria-hidden="true"></span>
+                      <strong>Kenya</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-image rail-logo-image-mpesa">
+                        <img src="assets/M-PESA_LOGO-01.svg.png" alt="M-PESA" width="960" height="512" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                        <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-pesalink">
+                        <img src="assets/pesalink%20logo.png" alt="PesaLink" width="235" height="214" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                        <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                      </span>
+                    </div>
                   </li>
                   <li>
-                    <strong>Uganda</strong>
-                    <span>MTN Mobile Money, Airtel Money, bank transfer</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-uganda" aria-hidden="true"></span>
+                      <strong>Uganda</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-image rail-logo-image-mtn">
+                        <img src="assets/mtn%20logo.png" alt="MTN MoMo" width="225" height="225" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                        <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                        <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                      </span>
+                    </div>
                   </li>
                   <li>
-                    <strong>Tanzania</strong>
-                    <span>Airtel Money, Tigo Pesa, bank transfer</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-tanzania" aria-hidden="true"></span>
+                      <strong>Tanzania</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-image rail-logo-image-airtel">
+                        <img src="assets/airtel%20money%20logo.png" alt="Airtel Money" width="194" height="260" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-tigo">
+                        <img src="assets/tigo%20logo.png" alt="Tigo Pesa" width="265" height="190" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-vodacom">
+                        <img src="assets/vodacom%20logo.png" alt="Vodacom" width="284" height="177" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-halotel">
+                        <img src="assets/halotel%20logo.png" alt="Halotel" width="338" height="149" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                    </div>
                   </li>
                   <li>
-                    <strong>Nigeria</strong>
-                    <span>Bank transfer and mobile money</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-nigeria" aria-hidden="true"></span>
+                      <strong>Nigeria</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-wapipay">
+                        <img src="assets/wapipay%20logo.jfif" alt="WapiPay" width="449" height="92" loading="lazy" decoding="async" />
+                      </span>
+                    </div>
                   </li>
                   <li>
-                    <strong>India</strong>
-                    <span>Bank transfer and local account payout</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-china" aria-hidden="true"></span>
+                      <strong>China</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-image rail-logo-image-wechat">
+                        <img src="assets/weechat%20logo.jfif" alt="WeChat Pay" width="225" height="225" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-image rail-logo-image-alipay">
+                        <img src="assets/alipay%20logo.png" alt="Alipay" width="447" height="113" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                    </div>
                   </li>
                   <li>
-                    <strong>United Kingdom</strong>
-                    <span>Bank transfer and local account payout</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-india" aria-hidden="true"></span>
+                      <strong>India</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-image rail-logo-image-upi">
+                        <img src="assets/india%20upi%20logo.png" alt="UPI" width="377" height="134" loading="lazy" decoding="async" />
+                      </span>
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                    </div>
                   </li>
                   <li>
-                    <strong>United States</strong>
-                    <span>Bank transfer and local account payout</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-uk" aria-hidden="true"></span>
+                      <strong>United Kingdom</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                    </div>
                   </li>
                   <li>
-                    <strong>China</strong>
-                    <span>WeChat Pay, Alipay, and bank transfer</span>
+                    <div class="platform-market-line">
+                      <span class="market-flag flag-us" aria-hidden="true"></span>
+                      <strong>United States</strong>
+                    </div>
+                    <div class="rail-logo-strip rail-logo-strip-small">
+                      <span class="rail-logo rail-logo-bank">Bank</span>
+                    </div>
                   </li>
                 </ul>
               </article>
@@ -564,6 +788,10 @@
                   <li>
                     <strong>Audit</strong>
                     <span>Reporting, logs, and compliance-grade visibility</span>
+                  </li>
+                  <li>
+                    <strong>Documentation</strong>
+                    <span>See trust and legal pages for terms, privacy, and security notes</span>
                   </li>
                 </ul>
               </article>

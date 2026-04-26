@@ -41,12 +41,13 @@
   `;
 
   function getLinkSet(page) {
-    if (page === "about") {
+    if (page !== "home") {
       return {
         home: "index.html#top",
         products: "index.html#products",
         markets: "index.html#markets",
         about: "about.html",
+        trust: "trust.html",
         start: "#get-started",
       };
     }
@@ -56,6 +57,7 @@
       products: "#products",
       markets: "#markets",
       about: "about.html",
+      trust: "trust.html",
       start: "#get-started",
     };
   }
@@ -63,6 +65,7 @@
   function renderHeader(page) {
     const links = getLinkSet(page);
     const aboutCurrent = page === "about" ? ' aria-current="page"' : "";
+    const trustCurrent = page === "trust" ? ' aria-current="page"' : "";
 
     return `
       <header class="site-header">
@@ -99,6 +102,7 @@
           <a href="https://docs.wapipay.io/">Developers</a>
           <a href="${links.markets}">Markets</a>
           <a href="${links.about}"${aboutCurrent}>About</a>
+          <a href="${links.trust}"${trustCurrent}>Trust</a>
         </nav>
 
         <div class="header-actions">
@@ -116,8 +120,8 @@
       <div class="closing-panel">
         <div class="cta-panel closing-cta">
           <p class="eyebrow">Get Started</p>
-          <h2><span class="text-reveal">Start with a promise you can rely on.</span></h2>
-          <p>Choose the WapiPay path that keeps transfers and integrations clear, trusted, and in control.</p>
+          <h2><span class="text-reveal">Choose the WapiPay path that fits the payment job.</span></h2>
+          <p>Download the app for personal transfers, use the developer portal for API payouts, or contact the team for larger settlement needs.</p>
           <div class="store-actions cta-store-actions" aria-label="Download WapiPay">
             ${storeButtons}
             <a class="button button-secondary" href="https://docs.wapipay.io/">Developer Portal</a>
@@ -128,8 +132,8 @@
               <span>Currencies supported</span>
             </div>
             <div class="closing-proof-item">
-              <strong>Instant</strong>
-              <span>Receiver payout</span>
+              <strong>App + API</strong>
+              <span>Personal and business access</span>
             </div>
             <div class="closing-proof-item">
               <strong>Local rails</strong>
@@ -149,7 +153,7 @@
               loading="lazy"
               decoding="async"
             />
-            <p>Where in the world do you pay? WapiPay keeps the promise with you.</p>
+            <p>Cross-border payments, wallets, business payouts, and OTC support across supported corridors.</p>
           </div>
           <div class="footer-columns">
             <section class="footer-column footer-location">
@@ -184,7 +188,16 @@
               <a href="${links.markets}">Markets</a>
               <a href="https://docs.wapipay.io/">Developers</a>
               <a href="${links.about}">About</a>
+              <a href="${links.trust}">Trust</a>
               <a href="${links.start}">Download App</a>
+            </section>
+
+            <section class="footer-column footer-links-group">
+              <span class="footer-heading">Legal</span>
+              <a href="trust.html">Trust & Security</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="terms.html">Terms of Use</a>
+              <a href="https://docs.wapipay.io/docs/f-a-q">FAQ</a>
             </section>
           </div>
         </footer>
