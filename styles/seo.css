@@ -413,6 +413,24 @@
   background: rgba(255, 255, 255, 0.92);
 }
 
+.seo-flag-tz {
+  background:
+    linear-gradient(145deg, transparent 0 39%, #111 39% 44%, #f3c400 44% 49%, #111 49% 54%, transparent 54%),
+    linear-gradient(to bottom, #1eb53a 0 50%, #00a3dd 50% 100%);
+}
+
+.seo-flag-in {
+  background: linear-gradient(to bottom, #ff9933 0 33%, #fff 33% 66%, #138808 66% 100%);
+}
+
+.seo-flag-in::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #1a4f9c;
+  border-radius: 999px;
+}
+
 .seo-app-rate {
   margin: -2px 4px 0;
   color: #111;
@@ -531,7 +549,7 @@
   grid-template-columns: 48px minmax(0, 1fr);
   gap: 18px;
   align-content: center;
-  min-height: min(64vh, 560px);
+  min-height: min(56vh, 500px);
   color: rgba(17, 17, 17, 0.36);
   opacity: 0.42;
   transform: translateY(20px);
@@ -620,16 +638,17 @@
 
 .seo-flow-stage {
   position: sticky;
-  top: 86px;
+  top: 78px;
   display: grid;
-  min-height: min(720px, calc(100vh - 116px));
+  min-height: clamp(500px, calc(100vh - 150px), 620px);
   place-items: center;
 }
 
 .seo-flow-phone {
   position: relative;
-  width: min(100%, 380px);
-  min-height: 660px;
+  width: min(100%, 350px);
+  height: clamp(500px, calc(100vh - 160px), 620px);
+  min-height: 0;
 }
 
 .seo-flow-panel {
@@ -651,15 +670,24 @@
   transform: translateY(0) scale(1);
 }
 
-.seo-flow-home-screen {
+.seo-flow-home-screen,
+.seo-flow-receipt-screen {
   position: relative;
-  width: min(304px, 88vw);
+  height: min(560px, calc(100vh - 190px));
   margin: 0;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 34px;
   background: #fff;
   box-shadow: 0 28px 80px rgba(17, 17, 17, 0.12);
   overflow: hidden;
+}
+
+.seo-flow-home-screen {
+  aspect-ratio: 304 / 644;
+}
+
+.seo-flow-receipt-screen {
+  aspect-ratio: 191 / 531;
 }
 
 .seo-flow-home-screen::after {
@@ -682,14 +710,164 @@
   backdrop-filter: blur(14px);
 }
 
-.seo-flow-home-screen img {
+.seo-flow-home-screen img,
+.seo-flow-receipt-screen img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .seo-flow-app-screen {
-  width: min(100%, 360px);
+  width: min(100%, 332px);
+  gap: 9px;
+  padding: 13px;
+  border-radius: 32px;
+}
+
+.seo-flow-app-screen .seo-app-amount-card {
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.seo-flow-app-screen .seo-app-amount-card strong {
+  font-size: 1.14rem;
+}
+
+.seo-flow-app-screen .seo-app-notice,
+.seo-flow-app-screen .seo-app-rail {
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.seo-flow-app-screen .seo-app-breakdown {
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.seo-flow-app-screen .seo-app-detail {
+  font-size: 0.76rem;
+}
+
+.seo-flow-app-screen .seo-app-total {
+  font-size: 0.84rem;
+}
+
+.seo-flow-app-screen .seo-app-button {
+  margin-top: 4px;
+  padding: 11px 16px;
+}
+
+.seo-flow-choice-screen,
+.seo-flow-details-screen {
+  align-content: start;
+}
+
+.seo-flow-choice,
+.seo-flow-detail-card,
+.seo-flow-note,
+.seo-flow-pin-sheet {
+  position: relative;
+  display: grid;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: #fff;
+}
+
+.seo-flow-choice {
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 11px;
+  align-items: center;
+  padding: 11px 12px;
+  border-radius: 16px;
+}
+
+.seo-flow-choice strong,
+.seo-flow-choice small,
+.seo-flow-choice > span:last-child,
+.seo-flow-detail-card span,
+.seo-flow-detail-card strong,
+.seo-flow-detail-card small,
+.seo-flow-note strong,
+.seo-flow-note span,
+.seo-flow-pin-sheet span,
+.seo-flow-pin-sheet strong {
+  display: block;
+}
+
+.seo-flow-choice strong,
+.seo-flow-detail-card strong,
+.seo-flow-note strong,
+.seo-flow-pin-sheet strong {
+  color: #111;
+  font-family: "Sora", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.seo-flow-choice strong {
+  font-size: 0.9rem;
+}
+
+.seo-flow-choice small,
+.seo-flow-detail-card small,
+.seo-flow-note span {
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.73rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.seo-flow-choice > span:last-child {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.05);
+  color: rgba(17, 17, 17, 0.58);
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.seo-flow-detail-card,
+.seo-flow-note,
+.seo-flow-pin-sheet {
+  gap: 5px;
+  padding: 12px 13px;
+  border-radius: 16px;
+}
+
+.seo-flow-detail-card span,
+.seo-flow-note strong,
+.seo-flow-pin-sheet span {
+  color: var(--brand-deep);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.seo-flow-detail-card strong,
+.seo-flow-note strong {
+  font-size: 0.95rem;
+}
+
+.seo-flow-note {
+  background: #f5fbf7;
+}
+
+.seo-flow-pin-sheet {
+  background: linear-gradient(145deg, rgba(0, 181, 73, 0.08), rgba(255, 255, 255, 0.96));
+}
+
+.seo-flow-pin-sheet div {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.seo-flow-pin-sheet i {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--brand);
+  box-shadow: 0 0 0 5px rgba(0, 181, 73, 0.08);
 }
 
 .seo-flow-highlight {
@@ -817,8 +995,12 @@
   .seo-flow-stage {
     position: relative;
     top: auto;
-    min-height: 620px;
+    min-height: 560px;
     order: -1;
+  }
+
+  .seo-flow-phone {
+    height: 560px;
   }
 
   .seo-flow-steps {

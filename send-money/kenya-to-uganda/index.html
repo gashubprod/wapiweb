@@ -191,7 +191,8 @@
             <h2><span class="text-reveal">Start from home. Confirm only when clear.</span></h2>
             <p class="seo-section-intro">
               The walkthrough begins where the customer begins: the WapiPay home screen, then the
-              transfer review that shows amount, route, rail, fees, and recipient payout.
+              key decisions that make a transfer feel safe: destination, amount, delivery method,
+              recipient, funding details, secure confirmation, and receipt.
             </p>
           </div>
 
@@ -206,21 +207,48 @@
                 </div>
               </article>
 
-              <article class="seo-flow-step" data-flow-step="amount">
+              <article class="seo-flow-step" data-flow-step="route">
                 <span class="seo-flow-step-number">02</span>
                 <div>
-                  <p class="seo-flow-kicker">Amount</p>
-                  <h3>Enter the Kenya to Uganda transfer.</h3>
-                  <p>Select the send amount, payout currency, and corridor before moving forward.</p>
+                  <p class="seo-flow-kicker">Destination</p>
+                  <h3>Select Uganda as the destination.</h3>
+                  <p>Choose where the money is going before the app shows the available payout route.</p>
                 </div>
               </article>
 
-              <article class="seo-flow-step" data-flow-step="review">
+              <article class="seo-flow-step" data-flow-step="amount">
                 <span class="seo-flow-step-number">03</span>
                 <div>
+                  <p class="seo-flow-kicker">Amount</p>
+                  <h3>Enter the amount and delivery method.</h3>
+                  <p>See what you send, what the recipient gets, and which rail will deliver the payout.</p>
+                </div>
+              </article>
+
+              <article class="seo-flow-step" data-flow-step="recipient">
+                <span class="seo-flow-step-number">04</span>
+                <div>
+                  <p class="seo-flow-kicker">Details</p>
+                  <h3>Choose the recipient and funding account.</h3>
+                  <p>Add or select a recipient, then confirm the source account and purpose of remittance.</p>
+                </div>
+              </article>
+
+              <article class="seo-flow-step" data-flow-step="confirm">
+                <span class="seo-flow-step-number">05</span>
+                <div>
                   <p class="seo-flow-kicker">Review</p>
-                  <h3>Confirm only when the promise is clear.</h3>
-                  <p>Check the rate, fees, rail, recipient payout, and total deductible before you continue.</p>
+                  <h3>Review everything, then enter your PIN.</h3>
+                  <p>Confirm only after the rate, fees, total debit, delivery method, and recipient are clear.</p>
+                </div>
+              </article>
+
+              <article class="seo-flow-step" data-flow-step="receipt">
+                <span class="seo-flow-step-number">06</span>
+                <div>
+                  <p class="seo-flow-kicker">Receipt</p>
+                  <h3>Leave with proof the transfer completed.</h3>
+                  <p>The receipt gives the customer a clear record of the amount, rail, status, and recipient payout.</p>
                 </div>
               </article>
             </div>
@@ -238,6 +266,57 @@
                       loading="lazy"
                     />
                   </figure>
+                </article>
+
+                <article class="seo-flow-panel" data-flow-panel="route" aria-hidden="true">
+                  <div class="seo-app-screen seo-flow-app-screen seo-flow-choice-screen">
+                    <div class="seo-app-status" aria-hidden="true">
+                      <span>9:41</span>
+                      <span class="seo-app-indicators">
+                        <span class="seo-app-signal"><i></i><i></i><i></i></span>
+                        <span class="seo-app-wifi"></span>
+                        <span class="seo-app-battery"></span>
+                      </span>
+                    </div>
+
+                    <div class="seo-app-topbar">
+                      <span class="seo-app-back" aria-hidden="true">&lsaquo;</span>
+                      <p class="seo-app-title">Select destination</p>
+                      <span></span>
+                    </div>
+
+                    <div class="seo-flow-choice seo-flow-highlight">
+                      <span class="seo-flag seo-flag-ug" aria-hidden="true"></span>
+                      <div>
+                        <strong>Uganda</strong>
+                        <small>Receive in UGX</small>
+                      </div>
+                      <span>Selected</span>
+                    </div>
+
+                    <div class="seo-flow-choice">
+                      <span class="seo-flag seo-flag-tz" aria-hidden="true"></span>
+                      <div>
+                        <strong>Tanzania</strong>
+                        <small>Receive in TZS</small>
+                      </div>
+                      <span>Available</span>
+                    </div>
+
+                    <div class="seo-flow-choice">
+                      <span class="seo-flag seo-flag-in" aria-hidden="true"></span>
+                      <div>
+                        <strong>India</strong>
+                        <small>Receive in INR</small>
+                      </div>
+                      <span>Available</span>
+                    </div>
+
+                    <div class="seo-flow-note">
+                      <strong>Next</strong>
+                      <span>Choose amount and delivery method.</span>
+                    </div>
+                  </div>
                 </article>
 
                 <article class="seo-flow-panel" data-flow-panel="amount" aria-hidden="true">
@@ -286,7 +365,7 @@
                       <span aria-hidden="true">&rsaquo;</span>
                     </div>
 
-                    <div class="seo-app-rail">
+                    <div class="seo-app-rail seo-flow-highlight">
                       <img src="../../assets/airtel%20money%20logo.png" alt="" loading="lazy" />
                       <div>
                         <strong>Airtel money</strong>
@@ -321,7 +400,51 @@
                   </div>
                 </article>
 
-                <article class="seo-flow-panel" data-flow-panel="review" aria-hidden="true">
+                <article class="seo-flow-panel" data-flow-panel="recipient" aria-hidden="true">
+                  <div class="seo-app-screen seo-flow-app-screen seo-flow-details-screen">
+                    <div class="seo-app-status" aria-hidden="true">
+                      <span>9:41</span>
+                      <span class="seo-app-indicators">
+                        <span class="seo-app-signal"><i></i><i></i><i></i></span>
+                        <span class="seo-app-wifi"></span>
+                        <span class="seo-app-battery"></span>
+                      </span>
+                    </div>
+
+                    <div class="seo-app-topbar">
+                      <span class="seo-app-back" aria-hidden="true">&lsaquo;</span>
+                      <p class="seo-app-title">Transfer details</p>
+                      <span></span>
+                    </div>
+
+                    <div class="seo-flow-detail-card seo-flow-highlight">
+                      <span>Recipient</span>
+                      <strong>Morganne Flaherty</strong>
+                      <small>Airtel Money account in Uganda</small>
+                    </div>
+
+                    <div class="seo-flow-detail-card">
+                      <span>Source account</span>
+                      <strong>KES wallet</strong>
+                      <small>KES 21,567.89 available</small>
+                    </div>
+
+                    <div class="seo-flow-detail-card">
+                      <span>Purpose of remittance</span>
+                      <strong>Personal transfer</strong>
+                      <small>Purpose selected before final review.</small>
+                    </div>
+
+                    <div class="seo-flow-note">
+                      <strong>Next</strong>
+                      <span>Review rate, fees, delivery method, and total debit.</span>
+                    </div>
+
+                    <span class="seo-app-button">Review transfer</span>
+                  </div>
+                </article>
+
+                <article class="seo-flow-panel" data-flow-panel="confirm" aria-hidden="true">
                   <div class="seo-app-screen seo-flow-app-screen">
                     <div class="seo-app-status" aria-hidden="true">
                       <span>9:41</span>
@@ -334,7 +457,7 @@
 
                     <div class="seo-app-topbar">
                       <span class="seo-app-back" aria-hidden="true">&lsaquo;</span>
-                      <p class="seo-app-title">Enter amount</p>
+                      <p class="seo-app-title">Review transfer</p>
                       <span></span>
                     </div>
 
@@ -398,8 +521,27 @@
                       </div>
                     </div>
 
-                    <span class="seo-app-button">Continue</span>
+                    <div class="seo-flow-pin-sheet seo-flow-highlight">
+                      <span>Secure confirmation</span>
+                      <strong>Enter PIN</strong>
+                      <div aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                    </div>
+
+                    <span class="seo-app-button">Send money</span>
                   </div>
+                </article>
+
+                <article class="seo-flow-panel" data-flow-panel="receipt" aria-hidden="true">
+                  <figure class="seo-flow-receipt-screen">
+                    <img
+                      src="../../assets/receipt-wapi.png"
+                      alt="WapiPay successful transfer receipt screen"
+                      width="191"
+                      height="531"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </figure>
                 </article>
               </div>
             </aside>
