@@ -1,5 +1,6 @@
 (function attachWapiAnalytics(global) {
   const GA_MEASUREMENT_ID = "G-H4C4SQTD1G";
+  const CLARITY_PROJECT_ID = "wi62mepian";
 
   global.dataLayer = global.dataLayer || [];
   global.gtag = global.gtag || function gtag() {
@@ -11,6 +12,17 @@
     anonymize_ip: true,
     transport_type: "beacon",
   });
+
+  if (!document.querySelector(`script[src="https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}"]`)) {
+    const clarityScript = document.createElement("script");
+    clarityScript.async = true;
+    clarityScript.src = `https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}`;
+    document.head.appendChild(clarityScript);
+  }
+
+  global.clarity = global.clarity || function clarity() {
+    (global.clarity.q = global.clarity.q || []).push(arguments);
+  };
 
   const cleanText = (value) => value.replace(/\s+/g, " ").trim();
 
