@@ -1,3 +1,4 @@
+// Google Analytics and Microsoft Clarity setup plus lightweight business-event tracking.
 (function attachWapiAnalytics(global) {
   const GA_MEASUREMENT_ID = "G-H4C4SQTD1G";
   const CLARITY_PROJECT_ID = "wi62mepian";
@@ -41,6 +42,7 @@
   };
 
   const classifyLink = (link) => {
+    // Keep event names business-focused so GA reports are useful without extra tagging.
     const href = link.getAttribute("href") || "";
     const label = getLinkLabel(link);
     const isDeveloperLink = href.includes("docs.wapipay.io");

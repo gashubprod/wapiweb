@@ -1,3 +1,4 @@
+// Customer rate checker. Uses static fallback rates until js/rates-api.js hydrates live rates.
 (function attachWapiRateCheck(global) {
   global.initWapiRateCheck = function initWapiRateCheck() {
     const rateForm = document.querySelector("[data-rate-form]");
@@ -107,6 +108,7 @@
     };
 
     const hydrateLiveRates = async () => {
+      // Keep the UI useful even before the backend endpoint is available.
       if (!global.WapiRateSource?.hydrateRates || !global.WapiRateSource.hasConfiguredEndpoint()) {
         setRateFeedState({ mode: "indicative", reason: "missing_endpoint" });
         syncRateEstimate();

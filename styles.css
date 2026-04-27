@@ -1,3 +1,4 @@
+/* Public stylesheet entrypoint. Keep this file small and delegate to focused CSS modules. */
 @import url("styles/core.css");
 @import url("styles/about.css");
 @import url("styles/responsive.css");

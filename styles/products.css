@@ -1,3 +1,4 @@
+/* Product story section: scroll-synced retail, enterprise, and OTC product paths. */
 .product-story {
   display: grid;
   grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);

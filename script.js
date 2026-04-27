@@ -1,3 +1,4 @@
+// Final bootstrap: render shared layout, initialize page behavior, then start the hero globe.
 if (window.renderWapiLayout) {
   window.renderWapiLayout();
 }

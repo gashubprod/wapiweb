@@ -1,3 +1,4 @@
+/* Customer-controlled rate preview band and live/indicative feed state styling. */
 .rate-check-band {
   width: min(calc(100% - 32px), 1120px);
   margin: 0 auto;

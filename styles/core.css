@@ -1,3 +1,4 @@
+/* Core homepage styles, ordered from global tokens to section-specific surfaces. */
 @import url("global.css");
 @import url("hero.css");
 @import url("rate-check.css");
@@ -7,5 +8,6 @@
 @import url("markets.css");
 @import url("product-surfaces.css");
 @import url("platform-legal.css");
+@import url("seo.css");
 @import url("footer.css");
 @import url("animations.css");

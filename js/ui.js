@@ -1,3 +1,4 @@
+// UI orchestrator. Individual behavior modules register their own init functions on window.
 (function attachWapiUi(global) {
   const initializers = [
     "initWapiHeaderMenu",
@@ -6,6 +7,7 @@
     "initWapiProducts",
     "initWapiScrollCards",
     "initWapiPromiseStory",
+    "initWapiSeoFlow",
     "initWapiReveal",
   ];
 

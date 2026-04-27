@@ -3,19 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WapiPay | Cross-Border Payments, Payouts, and Wallets</title>
+    <title>WapiPay | Cross-Border Payments Across Africa, Asia, UK & US</title>
     <meta
       name="description"
-      content="WapiPay helps people and businesses send, collect, and settle cross-border payments across mobile money, bank, wallet, card, and API rails."
+      content="Send, collect, and settle cross-border payments with upfront rates, local payout routes, app access, payment APIs, and OTC support."
     />
-    <meta property="og:title" content="WapiPay | Cross-Border Payments, Payouts, and Wallets" />
+    <link rel="canonical" href="https://www.wapipay.com/" />
+    <meta property="og:site_name" content="WapiPay" />
+    <meta property="og:title" content="WapiPay | Cross-Border Payments Across Africa, Asia, UK & US" />
     <meta
       property="og:description"
-      content="Send, collect, and settle cross-border payments across supported countries with app, API, and OTC execution paths."
+      content="Send, collect, and settle cross-border payments with upfront rates, local payout routes, app access, payment APIs, and OTC support."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/existing/logo.png" />
+    <meta property="og:url" content="https://www.wapipay.com/" />
+    <meta property="og:image" content="https://www.wapipay.com/assets/existing/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WapiPay | Cross-Border Payments Across Africa, Asia, UK & US" />
+    <meta
+      name="twitter:description"
+      content="Send, collect, and settle cross-border payments with upfront rates, local payout routes, app access, payment APIs, and OTC support."
+    />
+    <meta name="twitter:image" content="https://www.wapipay.com/assets/existing/logo.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.wapipay.com/#organization",
+            "name": "WapiPay",
+            "url": "https://www.wapipay.com/",
+            "logo": "https://www.wapipay.com/assets/existing/logo.png",
+            "foundingDate": "2019",
+            "foundingLocation": {
+              "@type": "Place",
+              "name": "Singapore"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.wapipay.com/#website",
+            "name": "WapiPay",
+            "url": "https://www.wapipay.com/",
+            "publisher": {
+              "@id": "https://www.wapipay.com/#organization"
+            }
+          }
+        ]
+      }
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4C4SQTD1G"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +70,7 @@
       <div data-site-header></div>
 
       <main id="top">
+        <!-- Hero: primary value proposition, proof points, CTAs, and animated corridor globe. -->
         <section class="hero section reveal is-visible">
           <div class="hero-copy">
             <p class="eyebrow">Cross-border payments for people and businesses</p>
@@ -101,6 +139,7 @@
           </div>
         </section>
 
+        <!-- Rate check: customer-controlled payout preview. Static rates work until live API is configured. -->
         <section class="rate-check-band reveal" id="rate-check" aria-labelledby="rate-check-title">
           <div class="rate-check-shell">
             <div class="rate-check-copy">
@@ -153,6 +192,7 @@
           </div>
         </section>
 
+        <!-- Promise story: explains the trust flow before money moves. -->
         <section
           class="section reveal promise-section"
           aria-labelledby="promise-title"
@@ -224,6 +264,7 @@
           </div>
         </section>
 
+        <!-- Supported rails: market-by-market payout options and local payment logos. -->
         <section class="brand-rail reveal" aria-label="Supported rails">
           <div class="rail-coverage-shell">
             <div class="rail-copy">
@@ -388,6 +429,7 @@
           </div>
         </section>
 
+        <!-- Platform highlights: compact proof points before the differentiation section. -->
         <section class="stats-band reveal" aria-label="Platform highlights">
           <div class="stat">
             <strong data-counter="20+">20+</strong>
@@ -403,6 +445,7 @@
           </div>
         </section>
 
+        <!-- Why WapiPay: contrast the usual cross-border drag with the WapiPay model. -->
         <section class="section reveal tension-section" id="about">
           <div class="section-heading">
             <p class="eyebrow">Why WapiPay</p>
@@ -433,6 +476,7 @@
           </div>
         </section>
 
+        <!-- Products: scroll-synced product story for retail, enterprise, and OTC audiences. -->
         <section class="section reveal">
           <div class="section-heading product-heading" id="products">
             <p class="eyebrow">Products</p>
@@ -620,6 +664,7 @@
           </div>
         </section>
 
+        <!-- Markets and controls: corridor coverage, product capabilities, and trust controls. -->
         <section class="section platform-band reveal">
           <div class="platform-band-shell">
             <div class="platform-intro" id="markets">
@@ -803,14 +848,17 @@
           </div>
         </section>
 
+        <!-- Closing CTA: shared closing component rendered by js/layout.js. -->
         <section class="section cta-section reveal" id="get-started">
           <div data-site-closing></div>
         </section>
       </main>
     </div>
 
+    <!-- Third-party globe dependencies load before the WapiPay globe module. -->
     <script src="vendor/three.min.js" defer></script>
     <script src="vendor/globe.gl.min.js" defer></script>
+    <!-- App data, feature modules, analytics, then the final bootstrap script. -->
     <script src="js/routes.js" defer></script>
     <script src="js/rates-api.js" defer></script>
     <script src="js/globe.js" defer></script>

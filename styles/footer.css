@@ -1,3 +1,4 @@
+/* Shared closing CTA and footer rendered into pages by js/layout.js. */
 .cta-section {
   padding-bottom: 72px;
 }

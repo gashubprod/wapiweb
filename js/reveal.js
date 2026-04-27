@@ -1,3 +1,4 @@
+// Shared reveal observer and simple stat counter animation.
 (function attachWapiReveal(global) {
   const animateCounter = (element) => {
     const targetValue = element.dataset.counter;

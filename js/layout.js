@@ -1,4 +1,6 @@
+// Shared layout renderer for header, closing CTA, and footer across static HTML pages.
 (function attachWapiLayout(global) {
+  // Store CTAs are reused in the hero/footer closing components.
   const storeButtons = `
     <a
       class="store-button"
@@ -40,15 +42,33 @@
     </a>
   `;
 
-  function getLinkSet(page) {
+  const getBasePath = () => document.body.dataset.basePath || "";
+
+  const resolveLocalPath = (basePath, path) => `${basePath}${path}`;
+
+  function getLinkSet(page, basePath = "") {
+    // Inner pages need full index.html anchors; homepage can use same-page anchors.
     if (page !== "home") {
       return {
-        home: "index.html#top",
-        products: "index.html#products",
-        markets: "index.html#markets",
-        about: "about.html",
-        trust: "trust.html",
+        home: resolveLocalPath(basePath, "index.html#top"),
+        products: resolveLocalPath(basePath, "index.html#products"),
+        markets: resolveLocalPath(basePath, "index.html#markets"),
+        about: resolveLocalPath(basePath, "about.html"),
+        trust: resolveLocalPath(basePath, "trust.html"),
         start: "#get-started",
+        privacy: resolveLocalPath(basePath, "privacy.html"),
+        terms: resolveLocalPath(basePath, "terms.html"),
+        contact: resolveLocalPath(basePath, "contact/"),
+        personalTransfers: resolveLocalPath(basePath, "personal-transfers/"),
+        kenyaUganda: resolveLocalPath(basePath, "send-money/kenya-to-uganda/"),
+        kenyaIndia: resolveLocalPath(basePath, "send-money/kenya-to-india/"),
+        kenyaTanzania: resolveLocalPath(basePath, "send-money/kenya-to-tanzania/"),
+        kenyaChina: resolveLocalPath(basePath, "send-money/kenya-to-china/"),
+        kenyaUk: resolveLocalPath(basePath, "send-money/kenya-to-united-kingdom/"),
+        kenyaUs: resolveLocalPath(basePath, "send-money/kenya-to-united-states/"),
+        businessPayouts: resolveLocalPath(basePath, "business-payouts/"),
+        paymentApis: resolveLocalPath(basePath, "payment-apis/"),
+        otc: resolveLocalPath(basePath, "otc/"),
       };
     }
 
@@ -59,11 +79,25 @@
       about: "about.html",
       trust: "trust.html",
       start: "#get-started",
+      privacy: "privacy.html",
+      terms: "terms.html",
+      contact: "contact/",
+      personalTransfers: "personal-transfers/",
+      kenyaUganda: "send-money/kenya-to-uganda/",
+      kenyaIndia: "send-money/kenya-to-india/",
+      kenyaTanzania: "send-money/kenya-to-tanzania/",
+      kenyaChina: "send-money/kenya-to-china/",
+      kenyaUk: "send-money/kenya-to-united-kingdom/",
+      kenyaUs: "send-money/kenya-to-united-states/",
+      businessPayouts: "business-payouts/",
+      paymentApis: "payment-apis/",
+      otc: "otc/",
     };
   }
 
   function renderHeader(page) {
-    const links = getLinkSet(page);
+    const basePath = getBasePath();
+    const links = getLinkSet(page, basePath);
     const aboutCurrent = page === "about" ? ' aria-current="page"' : "";
     const trustCurrent = page === "trust" ? ' aria-current="page"' : "";
 
@@ -72,7 +106,7 @@
         <a class="brand" href="${links.home}" aria-label="WapiPay home">
           <img
             class="brand-logo"
-            src="assets/existing/logo.png"
+            src="${resolveLocalPath(basePath, "assets/existing/logo.png")}"
             alt="WapiPay"
             width="449"
             height="92"
@@ -114,7 +148,8 @@
   }
 
   function renderClosing(page) {
-    const links = getLinkSet(page);
+    const basePath = getBasePath();
+    const links = getLinkSet(page, basePath);
 
     return `
       <div class="closing-panel">
@@ -146,7 +181,7 @@
           <div class="footer-brand">
             <img
               class="footer-logo"
-              src="assets/existing/logo.png"
+              src="${resolveLocalPath(basePath, "assets/existing/logo.png")}"
               alt="WapiPay"
               width="449"
               height="92"
@@ -178,7 +213,7 @@
               <span class="footer-heading">Contact</span>
               <a href="mailto:customercare@wapipay.com">customercare@wapipay.com</a>
               <a href="mailto:jambo@wapipay.com">jambo@wapipay.com</a>
-              <a href="https://docs.wapipay.io/docs/contact-us">Contact Us</a>
+              <a href="${links.contact}">Contact Us</a>
               <a href="https://docs.wapipay.io/docs/f-a-q">FAQ</a>
             </section>
 
@@ -186,17 +221,28 @@
               <span class="footer-heading">Explore</span>
               <a href="${links.products}">Products</a>
               <a href="${links.markets}">Markets</a>
+              <a href="${links.personalTransfers}">Personal Transfers</a>
+              <a href="${links.kenyaUganda}">Kenya to Uganda</a>
+              <a href="${links.kenyaIndia}">Kenya to India</a>
+              <a href="${links.kenyaTanzania}">Kenya to Tanzania</a>
+              <a href="${links.kenyaChina}">Kenya to China</a>
+              <a href="${links.kenyaUk}">Kenya to UK</a>
+              <a href="${links.kenyaUs}">Kenya to US</a>
+              <a href="${links.businessPayouts}">Business Payouts</a>
+              <a href="${links.paymentApis}">Payment APIs</a>
+              <a href="${links.otc}">OTC Support</a>
               <a href="https://docs.wapipay.io/">Developers</a>
               <a href="${links.about}">About</a>
               <a href="${links.trust}">Trust</a>
+              <a href="${links.contact}">Contact</a>
               <a href="${links.start}">Download App</a>
             </section>
 
             <section class="footer-column footer-links-group">
               <span class="footer-heading">Legal</span>
-              <a href="trust.html">Trust & Security</a>
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="terms.html">Terms of Use</a>
+              <a href="${links.trust}">Trust & Security</a>
+              <a href="${links.privacy}">Privacy Policy</a>
+              <a href="${links.terms}">Terms of Use</a>
               <a href="https://docs.wapipay.io/docs/f-a-q">FAQ</a>
             </section>
           </div>

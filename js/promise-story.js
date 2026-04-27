@@ -1,3 +1,4 @@
+// Promise story controller. Syncs text steps with the visual promise cards.
 (function attachWapiPromiseStory(global) {
   global.initWapiPromiseStory = function initWapiPromiseStory() {
     const promiseSection = document.querySelector("[data-promise-section]");
@@ -29,6 +30,7 @@
     let promiseFrame = null;
 
     const syncPromiseToScroll = () => {
+      // The section is scroll-driven, not time-driven, so users control the story pace.
       const viewportHeight = window.innerHeight;
       const focusLine = viewportHeight * 0.48;
       let activeIndex = 0;

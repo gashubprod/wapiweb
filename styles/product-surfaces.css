@@ -1,3 +1,4 @@
+/* Product mock surfaces shown inside the product story sticky stage. */
 .product-device-phone::before {
   content: "";
   position: absolute;

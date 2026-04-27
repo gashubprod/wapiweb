@@ -31,7 +31,11 @@ jobs:
           mkdir -p dist
           cp *.html styles.css script.js dist/
           cp -r assets vendor styles js dist/
+          for dir in send-money personal-transfers business-payouts payment-apis otc contact; do
+            if [ -d "$dir" ]; then cp -r "$dir" dist/; fi
+          done
           if [ -f robots.txt ]; then cp robots.txt dist/; fi
+          if [ -f sitemap.xml ]; then cp sitemap.xml dist/; fi
           touch dist/.nojekyll
 
       - name: Upload Pages artifact

@@ -1,3 +1,4 @@
+// Subtle desktop-only parallax for the hero visual layers.
 (function attachWapiHeroMotion(global) {
   global.initWapiHeroMotion = function initWapiHeroMotion() {
     const network = document.querySelector("[data-network]");

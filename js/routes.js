@@ -1,3 +1,4 @@
+// Static market and route data used by the globe, rate checker, and fallback rate display.
 (function attachWapiRoutes(global) {
   const MARKET_DEFINITIONS = {
     lagos: {
@@ -58,6 +59,7 @@
     },
   };
 
+  // Route IDs must stay stable because UI selects, analytics, and future live rates depend on them.
   const ROUTE_DEFINITIONS = [
     {
       id: "nairobi-dar-es-salaam",
@@ -201,6 +203,7 @@
     { code: "KES", label: "KES" },
   ];
 
+  // Mutable rate store: static defaults live here, and live rates can hydrate this map later.
   const sharedRouteRates = new Map(
     ROUTE_DEFINITIONS.map(({ id, rate, multiplier, outputCurrency, rateCheckLabel, rates }) => [
       id,

@@ -1,3 +1,4 @@
+// Optional live-rates adapter. Without an endpoint, the static route rates remain the source of truth.
 (function attachWapiRateSource(global) {
   // Keep the checker stable today; set this endpoint later to replace static rates.
   const ENDPOINT_META_SELECTOR = 'meta[name="wapi-rates-endpoint"]';

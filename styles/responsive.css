@@ -1,3 +1,4 @@
+/* Responsive overrides grouped by breakpoint after all base modules have loaded. */
 @media (max-width: 1180px) {
   .nav {
     display: none;

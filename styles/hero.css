@@ -1,3 +1,4 @@
+/* Homepage hero, proof strip, CTAs, and corridor-globe visual positioning. */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);

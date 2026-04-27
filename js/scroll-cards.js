@@ -1,3 +1,4 @@
+// Scroll progress treatment for closing CTA cards.
 (function attachWapiScrollCards(global) {
   global.initWapiScrollCards = function initWapiScrollCards() {
     const scrollCards = document.querySelectorAll(".cta-panel");

@@ -1,3 +1,4 @@
+// Mobile navigation behavior for the shared header rendered by js/layout.js.
 (function attachWapiHeaderMenu(global) {
   global.initWapiHeaderMenu = function initWapiHeaderMenu() {
     const header = document.querySelector(".site-header");

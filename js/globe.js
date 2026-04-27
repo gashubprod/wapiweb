@@ -1,6 +1,8 @@
+// Hero corridor globe. Uses static route data and degrades silently if globe assets fail.
 (function attachWapiRouteGlobe(global) {
   const desktopGlobeMedia = window.matchMedia("(min-width: 981px)");
   let liveGlobeInitialized = false;
+  // GeoJSON is fetched once and reused by the globe renderer.
   const globeGeoDataPromise = fetch("assets/world.geojson")
     .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
     .then((data) => (Array.isArray(data.features) ? data.features : []))
@@ -141,6 +143,7 @@
       const overlayThrottleMs = 1000 / 30;
       const overlayPositionThreshold = 1.25;
 
+      // Expand route IDs into globe-ready coordinates and styling.
       const routes = ROUTE_DEFINITIONS.map((route) => {
         const fromMarket = MARKET_DEFINITIONS[route.from];
         const toMarket = MARKET_DEFINITIONS[route.to];

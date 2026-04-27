@@ -1,3 +1,4 @@
+/* Scroll reveal, text reveal, product panel, and reduced-motion animation rules. */
 @keyframes product-surface-in {
   from {
     opacity: 0;

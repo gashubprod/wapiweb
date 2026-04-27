@@ -1,3 +1,4 @@
+// Product story controller. Keeps copy steps and mock product panels in sync while scrolling.
 (function attachWapiProducts(global) {
   global.initWapiProducts = function initWapiProducts() {
     const productSteps = Array.from(document.querySelectorAll(".product-step"));
@@ -30,6 +31,7 @@
     };
 
     const syncProductToScroll = () => {
+      // Use a stable viewport focus line so the active product changes predictably.
       const focusLine = window.innerHeight * 0.48;
       let activeStep = productSteps[0];
       let smallestDistance = Number.POSITIVE_INFINITY;

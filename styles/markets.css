@@ -1,3 +1,4 @@
+/* Market and rail logo presentation, including country flag treatments. */
 .rail-coverage-shell {
   display: grid;
   grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
