@@ -98,4 +98,15 @@
       field_value: field.value,
     });
   });
+
+  global.addEventListener("wapi:rates-status", (event) => {
+    const { mode, reason, appliedCount } = event.detail || {};
+    if (reason === "missing_endpoint") return;
+
+    trackEvent("rate_feed_status", {
+      rate_feed_mode: mode || "unknown",
+      rate_feed_reason: reason || "none",
+      applied_count: appliedCount || 0,
+    });
+  });
 })(window);

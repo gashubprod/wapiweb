@@ -39,13 +39,13 @@
             <h1><span class="text-reveal">Move money across borders, clearly and reliably.</span></h1>
             <div class="hero-support">
               <p class="hero-text">
-                Send personal transfers, run business payouts, connect payment APIs, and manage
-                larger settlements with local payment options in supported countries.
+                Send, collect, and settle with the rate, route, and payout path shown before you
+                commit.
               </p>
               <div class="hero-proof-band" aria-label="Platform proof points">
                 <div class="hero-proof-item">
-                  <strong>Supported</strong>
-                  <span>Countries</span>
+                  <strong>Upfront</strong>
+                  <span>Rates</span>
                 </div>
                 <div class="hero-proof-item">
                   <strong>App + API</strong>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="hero-proof-item">
                   <strong>Local</strong>
-                  <span>Payouts</span>
+                  <span>Payout routes</span>
                 </div>
               </div>
               <div class="hero-actions">
@@ -61,7 +61,8 @@
                 <a class="button button-secondary" href="https://docs.wapipay.io/">Explore APIs</a>
               </div>
               <p class="hero-platform-note">
-                Personal transfers, business payouts, developer integrations, and OTC support.
+                Use the app for personal transfers, or connect APIs and OTC support for business
+                volume.
               </p>
             </div>
           </div>
@@ -100,14 +101,17 @@
           </div>
         </section>
 
-        <section class="rate-check-band reveal" aria-labelledby="rate-check-title">
+        <section class="rate-check-band reveal" id="rate-check" aria-labelledby="rate-check-title">
           <div class="rate-check-shell">
             <div class="rate-check-copy">
               <p class="eyebrow">Rate Check</p>
               <h2 id="rate-check-title">
-                <span class="text-reveal">Check the rate before you send.</span>
+                <span class="text-reveal">Know the payout before you commit.</span>
               </h2>
-              <p>Choose the amount, send currency, and country route to preview the indicative payout.</p>
+              <p>
+                Preview the amount, route, and payout currency. Live backend rates will plug into
+                this same checker once the endpoint is ready.
+              </p>
             </div>
 
             <form class="rate-check-form" data-rate-form>
@@ -138,7 +142,10 @@
               </label>
 
               <div class="rate-check-result" aria-live="polite">
-                <span>You receive</span>
+                <div class="rate-check-result-topline">
+                  <span>Recipient gets</span>
+                  <small class="rate-check-status" data-rate-status>Indicative</small>
+                </div>
                 <strong data-rate-output>374,000.00 UGX</strong>
                 <small data-rate-meta>Indicative rate 1 USD = 3,740.00 UGX</small>
               </div>
@@ -805,8 +812,16 @@
     <script src="vendor/three.min.js" defer></script>
     <script src="vendor/globe.gl.min.js" defer></script>
     <script src="js/routes.js" defer></script>
+    <script src="js/rates-api.js" defer></script>
     <script src="js/globe.js" defer></script>
     <script src="js/layout.js" defer></script>
+    <script src="js/header-menu.js" defer></script>
+    <script src="js/rate-check.js" defer></script>
+    <script src="js/hero-motion.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/scroll-cards.js" defer></script>
+    <script src="js/promise-story.js" defer></script>
+    <script src="js/reveal.js" defer></script>
     <script src="js/ui.js" defer></script>
     <script src="js/analytics.js" defer></script>
     <script src="script.js" defer></script>
