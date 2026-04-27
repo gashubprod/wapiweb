@@ -84,7 +84,7 @@
 
 .product-display-visual-enterprise,
 .product-display-visual-otc {
-  grid-template-columns: minmax(0, 680px);
+  grid-template-columns: minmax(0, 700px);
   justify-content: start;
 }
 
@@ -92,8 +92,8 @@
 .product-quote-panel,
 .product-payload-checker {
   gap: 20px;
-  width: min(100%, 640px);
-  padding: clamp(22px, 3vw, 30px);
+  width: min(100%, 680px);
+  padding: clamp(20px, 2.4vw, 28px);
   border-radius: 30px;
 }
 

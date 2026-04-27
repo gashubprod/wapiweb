@@ -46,11 +46,12 @@
   }
 
   .hero-stage-frame {
-    min-height: 520px;
+    min-height: 500px;
+    transform: translateY(0);
   }
 
   .network-globe {
-    top: -8px;
+    top: -24px;
     left: 50%;
     right: auto;
     width: min(496px, 80%);
@@ -191,7 +192,7 @@
 
   .product-story {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 26px;
     margin-top: 38px;
   }
 
@@ -200,11 +201,11 @@
     top: auto;
     order: -1;
     height: auto;
-    min-height: 540px;
+    min-height: clamp(500px, 60vh, 600px);
   }
 
   .product-stage-frame {
-    min-height: 540px;
+    min-height: clamp(500px, 60vh, 600px);
     overflow: visible;
   }
 
@@ -215,11 +216,11 @@
   }
 
   .product-display {
-    inset: 38px 0 0;
+    inset: 0;
   }
 
   .product-display-visual {
-    min-height: 500px;
+    min-height: clamp(480px, 58vh, 580px);
     justify-content: center;
   }
 
@@ -235,7 +236,7 @@
 
   .product-step {
     min-height: auto;
-    padding: 28px 0;
+    padding: 24px 0;
     opacity: 1;
     transform: none;
   }
@@ -290,7 +291,7 @@
 
   .hero {
     gap: 22px;
-    padding-top: 40px;
+    padding-top: 34px;
   }
 
   .about-hero {
@@ -332,8 +333,9 @@
   }
 
   .hero-copy h1 {
-    max-width: 10.5ch;
-    font-size: clamp(2.65rem, 14vw, 4.1rem);
+    max-width: 9.4ch;
+    font-size: 3.25rem;
+    line-height: 0.98;
   }
 
   .hero-proof-band {
@@ -356,7 +358,7 @@
   }
 
   .hero-stage-frame {
-    min-height: 488px;
+    min-height: 460px;
   }
 
   .network-globe {
@@ -412,15 +414,11 @@
   }
 
   .product-stage-shell {
-    min-height: 510px;
+    min-height: clamp(480px, 62vh, 560px);
   }
 
   .product-stage-frame {
-    min-height: 510px;
-  }
-
-  .product-stage-label {
-    font-size: 0.68rem;
+    min-height: clamp(480px, 62vh, 560px);
   }
 
   .product-step {
@@ -453,6 +451,10 @@
 
   .product-display-visual-retail {
     grid-template-columns: minmax(230px, 304px);
+  }
+
+  .product-display-visual {
+    min-height: clamp(450px, 58vh, 540px);
   }
 
   .product-dashboard,
@@ -508,6 +510,58 @@
 }
 
 @media (max-width: 640px) {
+  .section,
+  .brand-rail,
+  .stats-band {
+    width: min(calc(100% - 44px), var(--max-width));
+  }
+
+  .eyebrow {
+    display: block;
+    max-width: 20rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .eyebrow::before {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .hero-support,
+  .hero-text,
+  .hero-platform-note {
+    width: 100%;
+    max-width: 20.5rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 8.9ch;
+    font-size: 2.92rem;
+  }
+
+  .hero-text {
+    font-size: 0.96rem;
+  }
+
+  .hero-proof-band {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+
+  .hero-proof-item {
+    align-items: start;
+    min-width: 0;
+  }
+
+  .hero-proof-item:last-child {
+    grid-column: 1 / -1;
+  }
+
   .about-card,
   .about-founder-card {
     padding: 22px 18px;
@@ -548,11 +602,11 @@
   }
 
   .product-stage-shell {
-    min-height: 620px;
+    min-height: clamp(500px, 68vh, 560px);
   }
 
   .product-stage-frame {
-    min-height: 620px;
+    min-height: clamp(500px, 68vh, 560px);
   }
 
   .product-step {
@@ -577,7 +631,12 @@
     grid-template-columns: 1fr;
   }
 
+  .product-display-visual {
+    min-height: clamp(460px, 64vh, 540px);
+  }
+
   .product-device-phone {
+    width: min(244px, 72vw);
     min-height: auto;
     border-radius: 28px;
   }

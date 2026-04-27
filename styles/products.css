@@ -1,8 +1,8 @@
 .product-story {
   display: grid;
   grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);
-  gap: clamp(34px, 6vw, 78px);
-  margin-top: 48px;
+  gap: clamp(32px, 5vw, 68px);
+  margin-top: 42px;
   align-items: start;
 }
 
@@ -11,7 +11,7 @@
   gap: 0;
   width: 100%;
   margin: 0;
-  padding: 8vh 0 16vh;
+  padding: 4vh 0 12vh;
 }
 
 .product-step {
@@ -21,7 +21,7 @@
   column-gap: 18px;
   align-content: center;
   min-width: 0;
-  min-height: min(78vh, 720px);
+  min-height: min(68vh, 620px);
   padding: 0;
   border: 0;
   background: transparent;
@@ -147,11 +147,11 @@
 
 .product-stage-shell {
   position: sticky;
-  top: 92px;
+  top: 70px;
   display: grid;
-  align-items: center;
-  height: min(690px, calc(100vh - 116px));
-  min-height: 560px;
+  align-items: start;
+  height: clamp(540px, calc(100vh - 102px), 660px);
+  min-height: 0;
   border-radius: 0;
 }
 
@@ -183,27 +183,9 @@
   transform: translate(-50%, -50%);
 }
 
-.product-stage-chrome {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 4;
-  display: flex;
-  justify-content: flex-start;
-  margin: 0;
-}
-
-.product-stage-label {
-  color: rgba(17, 17, 17, 0.44);
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .product-display {
   position: absolute;
-  inset: 34px 0 0;
+  inset: 0;
   display: grid;
   place-items: center;
   opacity: 0;

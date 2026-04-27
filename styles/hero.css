@@ -1,7 +1,7 @@
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: clamp(28px, 4vw, 64px);
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: clamp(36px, 4.4vw, 78px);
   padding-top: 40px;
   align-items: center;
 }
@@ -9,7 +9,7 @@
 .hero-copy {
   display: grid;
   align-content: start;
-  width: min(100%, 560px);
+  width: min(100%, 590px);
   justify-self: start;
   padding-right: 0;
 }
@@ -31,8 +31,8 @@
 }
 
 .hero-copy h1 {
-  max-width: 9.4ch;
-  font-size: clamp(2.9rem, 5vw, 4.7rem);
+  max-width: 8.4ch;
+  font-size: clamp(3.1rem, 4.45vw, 4.65rem);
   line-height: 0.94;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .hero-support {
-  width: min(100%, 30rem);
+  width: min(100%, 31rem);
   margin-top: 18px;
   margin-left: 0;
 }
@@ -234,14 +234,15 @@
 .hero-stage-frame {
   position: relative;
   width: 100%;
-  max-width: 640px;
-  min-height: 532px;
+  max-width: 680px;
+  min-height: clamp(500px, 58vh, 560px);
   overflow: visible;
   padding: 0;
   border: 0;
   border-radius: 0;
   background: none;
   box-shadow: none;
+  transform: translateY(-34px);
 }
 
 .hero-stage-frame::before {
@@ -270,10 +271,10 @@
 
 .network-globe {
   position: absolute;
-  top: -6px;
+  top: -42px;
   left: 20px;
   right: auto;
-  width: min(520px, 86%);
+  width: min(540px, 86%);
   aspect-ratio: 1;
   z-index: 0;
   pointer-events: auto;
@@ -332,7 +333,7 @@
 .network-route-dock {
   --route-accent: var(--brand);
   --dock-x: 50%;
-  --dock-y: 68%;
+  --dock-y: 62%;
   position: absolute;
   left: var(--dock-x);
   top: var(--dock-y);

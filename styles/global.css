@@ -17,7 +17,8 @@
   --radius-lg: 28px;
   --radius-md: 22px;
   --radius-sm: 16px;
-  --max-width: 1240px;
+  --max-width: 1440px;
+  --page-gutter: clamp(32px, 6vw, 96px);
 }
 
 * {
@@ -26,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -33,6 +35,13 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--text);
   background: var(--surface);
+  overflow-x: clip;
+}
+
+img,
+canvas,
+svg {
+  max-width: 100%;
 }
 
 body::before {
@@ -83,7 +92,7 @@ button,
 .section,
 .brand-rail,
 .stats-band {
-  width: min(calc(100% - 32px), var(--max-width));
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--max-width));
   margin: 0 auto;
 }
 
@@ -97,7 +106,7 @@ button,
   gap: 24px;
   width: 100%;
   margin: 0;
-  padding: 18px max(24px, calc((100vw - var(--max-width)) / 2));
+  padding: 18px max(var(--page-gutter), calc((100vw - var(--max-width)) / 2));
   border: 0;
   border-bottom: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 0;
