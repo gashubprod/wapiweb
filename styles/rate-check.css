@@ -29,11 +29,26 @@
   letter-spacing: -0.045em;
 }
 
-.rate-check-copy p:last-child {
+.rate-check-copy > p:not(.eyebrow) {
   max-width: 34rem;
   margin: 14px 0 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.rate-check-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 18px;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rate-check-link:hover {
+  color: var(--brand);
 }
 
 .rate-check-form {

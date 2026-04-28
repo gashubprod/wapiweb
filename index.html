@@ -9,6 +9,8 @@
       content="Send, collect, and settle cross-border payments with upfront rates, local payout routes, app access, payment APIs, and OTC support."
     />
     <link rel="canonical" href="https://www.wapipay.com/" />
+    <link rel="icon" type="image/jpeg" href="assets/favicon.jpg" />
+    <link rel="apple-touch-icon" href="assets/favicon.jpg" />
     <meta property="og:site_name" content="WapiPay" />
     <meta property="og:title" content="WapiPay | Cross-Border Payments Across Africa, Asia, UK & US" />
     <meta
@@ -60,9 +62,6 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="vendor/three.min.js" as="script" />
-    <link rel="preload" href="vendor/globe.gl.min.js" as="script" />
-    <link rel="preload" href="assets/world.geojson" as="fetch" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body data-page="home">
@@ -148,9 +147,9 @@
                 <span class="text-reveal">Know the payout before you commit.</span>
               </h2>
               <p>
-                Preview the amount, route, and payout currency. Live backend rates will plug into
-                this same checker once the endpoint is ready.
+                Preview the amount, route, and payout currency before you confirm the transfer.
               </p>
+              <a class="rate-check-link" href="send-money/">Explore corridor rate pages</a>
             </div>
 
             <form class="rate-check-form" data-rate-form>
@@ -164,6 +163,7 @@
                 <select data-rate-currency>
                   <option value="USD">USD</option>
                   <option value="KES">KES</option>
+                  <option value="UGX">UGX</option>
                 </select>
               </label>
 
@@ -177,6 +177,12 @@
                   <option value="nairobi-new-york">Kenya to United States</option>
                   <option value="nairobi-mumbai">Kenya to India</option>
                   <option value="nairobi-guangzhou">Kenya to China</option>
+                  <option value="kampala-nairobi">Uganda to Kenya</option>
+                  <option value="kampala-dar-es-salaam">Uganda to Tanzania</option>
+                  <option value="kampala-mumbai">Uganda to India</option>
+                  <option value="kampala-guangzhou">Uganda to China</option>
+                  <option value="kampala-london">Uganda to United Kingdom</option>
+                  <option value="kampala-new-york">Uganda to United States</option>
                 </select>
               </label>
 
@@ -855,13 +861,10 @@
       </main>
     </div>
 
-    <!-- Third-party globe dependencies load before the WapiPay globe module. -->
-    <script src="vendor/three.min.js" defer></script>
-    <script src="vendor/globe.gl.min.js" defer></script>
     <!-- App data, feature modules, analytics, then the final bootstrap script. -->
     <script src="js/routes.js" defer></script>
+    <script src="js/globe-loader.js" defer></script>
     <script src="js/rates-api.js" defer></script>
-    <script src="js/globe.js" defer></script>
     <script src="js/layout.js" defer></script>
     <script src="js/header-menu.js" defer></script>
     <script src="js/rate-check.js" defer></script>

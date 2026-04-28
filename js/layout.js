@@ -59,13 +59,11 @@
         privacy: resolveLocalPath(basePath, "privacy.html"),
         terms: resolveLocalPath(basePath, "terms.html"),
         contact: resolveLocalPath(basePath, "contact/"),
+        faq: resolveLocalPath(basePath, "faq/"),
+        sendMoney: resolveLocalPath(basePath, "send-money/"),
+        kenyaCorridors: resolveLocalPath(basePath, "send-money/"),
+        ugandaCorridors: resolveLocalPath(basePath, "send-money/uganda/"),
         personalTransfers: resolveLocalPath(basePath, "personal-transfers/"),
-        kenyaUganda: resolveLocalPath(basePath, "send-money/kenya-to-uganda/"),
-        kenyaIndia: resolveLocalPath(basePath, "send-money/kenya-to-india/"),
-        kenyaTanzania: resolveLocalPath(basePath, "send-money/kenya-to-tanzania/"),
-        kenyaChina: resolveLocalPath(basePath, "send-money/kenya-to-china/"),
-        kenyaUk: resolveLocalPath(basePath, "send-money/kenya-to-united-kingdom/"),
-        kenyaUs: resolveLocalPath(basePath, "send-money/kenya-to-united-states/"),
         businessPayouts: resolveLocalPath(basePath, "business-payouts/"),
         paymentApis: resolveLocalPath(basePath, "payment-apis/"),
         otc: resolveLocalPath(basePath, "otc/"),
@@ -82,13 +80,11 @@
       privacy: "privacy.html",
       terms: "terms.html",
       contact: "contact/",
+      faq: "faq/",
+      sendMoney: "send-money/",
+      kenyaCorridors: "send-money/",
+      ugandaCorridors: "send-money/uganda/",
       personalTransfers: "personal-transfers/",
-      kenyaUganda: "send-money/kenya-to-uganda/",
-      kenyaIndia: "send-money/kenya-to-india/",
-      kenyaTanzania: "send-money/kenya-to-tanzania/",
-      kenyaChina: "send-money/kenya-to-china/",
-      kenyaUk: "send-money/kenya-to-united-kingdom/",
-      kenyaUs: "send-money/kenya-to-united-states/",
       businessPayouts: "business-payouts/",
       paymentApis: "payment-apis/",
       otc: "otc/",
@@ -214,24 +210,22 @@
               <a href="mailto:customercare@wapipay.com">customercare@wapipay.com</a>
               <a href="mailto:jambo@wapipay.com">jambo@wapipay.com</a>
               <a href="${links.contact}">Contact Us</a>
-              <a href="https://docs.wapipay.io/docs/f-a-q">FAQ</a>
+              <a href="${links.faq}">FAQ</a>
             </section>
 
             <section class="footer-column footer-links-group">
               <span class="footer-heading">Explore</span>
               <a href="${links.products}">Products</a>
               <a href="${links.markets}">Markets</a>
+              <a href="${links.sendMoney}">Send Money</a>
+              <a href="${links.kenyaCorridors}">Kenya Corridors</a>
+              <a href="${links.ugandaCorridors}">Uganda Corridors</a>
               <a href="${links.personalTransfers}">Personal Transfers</a>
-              <a href="${links.kenyaUganda}">Kenya to Uganda</a>
-              <a href="${links.kenyaIndia}">Kenya to India</a>
-              <a href="${links.kenyaTanzania}">Kenya to Tanzania</a>
-              <a href="${links.kenyaChina}">Kenya to China</a>
-              <a href="${links.kenyaUk}">Kenya to UK</a>
-              <a href="${links.kenyaUs}">Kenya to US</a>
               <a href="${links.businessPayouts}">Business Payouts</a>
               <a href="${links.paymentApis}">Payment APIs</a>
               <a href="${links.otc}">OTC Support</a>
               <a href="https://docs.wapipay.io/">Developers</a>
+              <a href="https://docs.wapipay.io/docs/f-a-q">API FAQ</a>
               <a href="${links.about}">About</a>
               <a href="${links.trust}">Trust</a>
               <a href="${links.contact}">Contact</a>

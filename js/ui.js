@@ -7,6 +7,7 @@
     "initWapiProducts",
     "initWapiScrollCards",
     "initWapiPromiseStory",
+    "initWapiSeoFlowContent",
     "initWapiSeoFlow",
     "initWapiReveal",
   ];

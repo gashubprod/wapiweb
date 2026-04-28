@@ -33,6 +33,10 @@
     grid-template-columns: 1fr;
   }
 
+  .hero-stage {
+    display: none;
+  }
+
   .hero-proof-band {
     gap: 12px 18px;
   }
@@ -563,6 +567,20 @@
     grid-column: 1 / -1;
   }
 
+  .hero-stage-frame {
+    min-height: 420px;
+  }
+
+  .network-globe {
+    top: 8px;
+    width: min(340px, calc(100% - 20px));
+  }
+
+  .network-route-dock {
+    bottom: 18px;
+    width: min(268px, calc(100% - 28px));
+  }
+
   .about-card,
   .about-founder-card {
     padding: 22px 18px;
@@ -700,4 +718,5 @@
     transform: none;
     filter: none;
   }
+
 }

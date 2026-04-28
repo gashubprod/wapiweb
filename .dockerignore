@@ -1,0 +1,9 @@
+.git
+.github
+aws
+node_modules
+frames
+*.mp4
+*.mov
+*.pdf
+assets/kenya to uganda.png

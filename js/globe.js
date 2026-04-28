@@ -1,6 +1,6 @@
 // Hero corridor globe. Uses static route data and degrades silently if globe assets fail.
 (function attachWapiRouteGlobe(global) {
-  const desktopGlobeMedia = window.matchMedia("(min-width: 981px)");
+  const desktopGlobeMedia = window.matchMedia("(min-width: 1181px)");
   let liveGlobeInitialized = false;
   // GeoJSON is fetched once and reused by the globe renderer.
   const globeGeoDataPromise = fetch("assets/world.geojson")
